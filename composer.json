@@ -1,0 +1,19 @@
+{
+    "name": "sitedigitaloficial/pagina",
+    "description": "SiteDigital <admin@sitedigital.com.co>",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SiteDigital",
+            "email": "admin@sitedigital.com.co"
+        }
+    ],
+    "autoload": {
+    "psr-4": {
+        "AkshayKhale1992\\ModelNote\\": "src/"
+    }
+},
+    "minimum-stability": "dev",
+    "require": {}
+}
