@@ -1,12 +1,12 @@
 {
     "name": "sitedigitaloficial/pagina",
-    "description": "SiteDigital <admin@sitedigital.com.co>",
+    "description": "Site Digital S.A.S Página Módulo para crear y administrar sitios web, de uso autonomo y práctico para implementar contenidos.",
     "type": "project",
     "license": "MIT",
     "authors": [
         {
             "name": "SiteDigital",
-            "email": "admin@sitedigital.com.co"
+            "email": "desarrollo@sitedigital.com.co"
         }
     ],
     "autoload": {

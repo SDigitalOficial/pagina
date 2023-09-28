@@ -213,7 +213,9 @@ public function consultaform(){
   if(!$this->tenantName){
   $pagina = new Page;
   $pagina->page = Input::get('pagina');
-  $pagina->slug = Str::slug($pagina->page);
+  $pagina->idio = Input::get('idioma');
+  $pagina->slugcon = Str::slug($pagina->page);
+  $pagina->slug = $pagina->idio.'/'.$pagina->slugcon;
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->titulo = Input::get('titulo');
@@ -260,7 +262,9 @@ public function consultaform(){
  else{
   $pagina = new \DigitalsiteSaaS\Pagina\Tenant\Page;
   $pagina->page = Input::get('pagina');
-  $pagina->slug = Str::slug($pagina->page);
+  $pagina->idio = Input::get('idioma');
+  $pagina->slugcon = Str::slug($pagina->page);
+  $pagina->slug = $pagina->idio.'/'.$pagina->slugcon;
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->titulo = Input::get('titulo');
@@ -315,7 +319,9 @@ public function consultaform(){
   $pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::find($id);
   }
   $pagina->page = Input::get('pagina');
-  $pagina->slug = Str::slug($pagina->page);
+  $pagina->idio = Input::get('idioma');
+  $pagina->slugcon = Str::slug($pagina->page);
+  $pagina->slug = $pagina->idio.'/'.$pagina->slugcon;
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->description = Input::get('descripcion');
   $pagina->titulo = Input::get('titulo');

@@ -1031,9 +1031,15 @@ public function imagenescarousel($id){
  }
 
  public function subtab($id){
+  if(!$this->tenantName){
   $contenido = Content::find($id)->Tabs;
   $contenida = Content::find($id)->Tabs;
   $conteni = Content::find($id);
+  }else{
+  $contenido = \DigitalsiteSaaS\Pagina\Tenant\Content::find($id)->Tabs;
+  $contenida = \DigitalsiteSaaS\Pagina\Tenant\Content::find($id)->Tabs;
+  $conteni = \DigitalsiteSaaS\Pagina\Tenant\Content::find($id);
+  }
   return view('pagina::modulo-tabs')->with('contenido', $contenido)->with('contenida', $contenida)->with('amour', $contenido)->with('conteni', $conteni)->with('face', $contenido);
  }
 
