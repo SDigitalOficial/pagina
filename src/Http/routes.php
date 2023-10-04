@@ -1,103 +1,88 @@
 <?php
 Route::group(['middleware' => ['auths','saas']], function (){
- Route::post('/suscripcion/tarjeta', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@tarjeta');
-  Route::get('/suscripcion/planweb', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@planweb');
-  Route::post('/suscripcion/crearhost', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@create');
- Route::get('saas/sitesaas', 'DigitalsiteSaaS\Pagina\Http\PaginaController@sitesaas');
- Route::get('editar/usuariosaas', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editarsaas');
- Route::post('usuario/actualizar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@actualizaruser');
- Route::post('usuario/cancelarplan/', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@cancelarplan');
-  Route::post('usuario/actualizarpass/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@actualizaruserpass');
- Route::get('editar/contrasena', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editarcontrasena');
-  Route::get('actualizar/host', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@actualizarhost');
-  Route::post('suscripcion/actualizarhost/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@updatehost');
+Route::post('/suscripcion/tarjeta', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@tarjeta');
+Route::get('/suscripcion/planweb', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@planweb');
+Route::post('/suscripcion/crearhost', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@create');
+Route::get('saas/sitesaas', 'DigitalsiteSaaS\Pagina\Http\PaginaController@sitesaas');
+Route::get('editar/usuariosaas', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editarsaas');
+Route::post('usuario/actualizar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@actualizaruser');
+Route::post('usuario/cancelarplan/', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@cancelarplan');
+Route::post('usuario/actualizarpass/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@actualizaruserpass');
+Route::get('editar/contrasena', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editarcontrasena');
+Route::get('actualizar/host', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@actualizarhost');
+Route::post('suscripcion/actualizarhost/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@updatehost');
+Route::get('gestion/contenidos/tenants', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@tenants');
+
+
 });
+
 
 Route::group(['middleware' => ['auths','administrador']], function (){
 
- Route::resource('gestion/paginas', 'DigitalsiteSaaS\Pagina\Http\PaginaController');
- Route::resource('gestion/paginas/crear', 'DigitalsiteSaaS\Pagina\Http\PaginaController@show');
- Route::post('gestion/paginas/crearpagina', 'DigitalsiteSaaS\Pagina\Http\PaginaController@crearpagina');
- Route::get('gestion/paginas/actualizar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@actualizar');
- Route::get('gestion/paginas/editar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editar');
- Route::get('gestion/paginas/editarre/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editarre');
- Route::get('gestion/paginas/subpagina/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@subpagina');
- Route::get('gestion/paginas/eliminar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@eliminar');
-
-
- 
-
+Route::resource('gestion/paginas', 'DigitalsiteSaaS\Pagina\Http\PaginaController');
+Route::resource('gestion/paginas/crear', 'DigitalsiteSaaS\Pagina\Http\PaginaController@show');
+Route::post('gestion/paginas/crearpagina', 'DigitalsiteSaaS\Pagina\Http\PaginaController@crearpagina');
+Route::get('gestion/paginas/actualizar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@actualizar');
+Route::get('gestion/paginas/editar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editar');
+Route::get('gestion/paginas/editarre/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editarre');
+Route::get('gestion/paginas/subpagina/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@subpagina');
+Route::get('gestion/paginas/eliminar/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@eliminar');
 Route::get('gestion/contenidos/diagrama/update/{id}', 'DigitalsiteSaaS\Pagina\Http\PaginaController@editardiagrama');
 });
 
 Route::group(['middleware' => ['auths','administrador']], function (){
- Route::resource('/gestor/ver-templates', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController');
- Route::get('/gestor/ver-config/publico', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@publico');
- Route::get('/gestor/ver-config/privado', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@privado');
- Route::get('/gestor/planes-saas', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@planessaas');
-  Route::get('/gestor/editar-plan/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@editarplanessaas');
-   Route::post('suscripcion/editar-plan/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@actualizarplansaas');
- Route::get('/suscripcion/pagos', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@pagos');
-  Route::get('/gestor/crear-plansaas', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@crearplanessaas');
-   Route::post('/suscripcion/crear-plan', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@crearplan');
-   Route::get('/suscripcion/eliminar-plan/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@eliminarplan');
-   Route::get('/suscripcion/ver-clientes', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@listaclientes');
-    Route::get('/suscripcion/ver-suscripciones', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@listasuscripciones');
-    Route::get('/suscripcion/credenciales', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@editarcredenciales');
-    Route::post('/suscripcion/editarcredenciales', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@editarcredencialesweb');
- Route::post('/gestor/zip', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@template');
- Route::get('/gestor/subir-template', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@templatevista');
- Route::resource('gestor/templates/eliminartemplate', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@destroy');
- Route::post('gestion/contenidos/crear-configuracion', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearconfiguracion');
- Route::post('gestion/contenidos/actualizar-configuracion/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@update');
- Route::get('gestion/venta', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@venta');
- Route::post('gestion/contenidos/crearlogo', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearlogo');
- Route::post('gestion/contenidos/crearlogofooter', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearlogofooter');
- Route::post('gestion/contenidos/actualizarservicio', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarservicio');
-  Route::post('gestion/contenidos/actualizarrecaptcha', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarrecaptcha');
- Route::post('gestion/contenidos/actualizarventa', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarventa');
- Route::post('gestion/contenidos/seoupdate', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@updateseo');
- Route::post('gestion/contenidos/redes-sociales', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@updatered');
- Route::get('gestion/recaptcha', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@recaptcha');
- 
- 
-
-  Route::get('gestion/redes-sociales', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@verredes'); 
-
-  Route::get('gestion/ubicacion', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@verubicacion');
-
+Route::resource('/gestor/ver-templates', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController');
+Route::get('/gestor/ver-config/publico', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@publico');
+Route::get('/gestor/ver-config/privado', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@privado');
+Route::get('/gestor/planes-saas', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@planessaas');
+Route::get('/gestor/editar-plan/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@editarplanessaas');
+Route::post('suscripcion/editar-plan/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@actualizarplansaas');
+Route::get('/suscripcion/pagos', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@pagos');
+Route::get('/gestor/crear-plansaas', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@crearplanessaas');
+Route::post('/suscripcion/crear-plan', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@crearplan');
+Route::get('/suscripcion/eliminar-plan/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@eliminarplan');
+Route::get('/suscripcion/ver-clientes', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@listaclientes');
+Route::get('/suscripcion/ver-suscripciones', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@listasuscripciones');
+Route::get('/suscripcion/credenciales', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@editarcredenciales');
+Route::post('/suscripcion/editarcredenciales', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@editarcredencialesweb');
+Route::post('/gestor/zip', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@template');
+Route::get('/gestor/subir-template', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@templatevista');
+Route::resource('gestor/templates/eliminartemplate', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@destroy');
+Route::post('gestion/contenidos/crear-configuracion', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearconfiguracion');
+Route::post('gestion/contenidos/actualizar-configuracion/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@update');
+Route::get('gestion/venta', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@venta');
+Route::post('gestion/contenidos/crearlogo', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearlogo');
+Route::post('gestion/contenidos/crearlogofooter', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearlogofooter');
+Route::post('gestion/contenidos/actualizarservicio', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarservicio');
+Route::post('gestion/contenidos/actualizarrecaptcha', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarrecaptcha');
+Route::post('gestion/contenidos/actualizarventa', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarventa');
+Route::post('gestion/contenidos/seoupdate', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@updateseo');
+Route::post('gestion/contenidos/redes-sociales', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@updatered');
+Route::get('gestion/recaptcha', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@recaptcha');
+Route::get('gestion/redes-sociales', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@verredes'); 
+Route::get('gestion/ubicacion', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@verubicacion');
 Route::get('gestion/seo', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@seo');
- 
-
-  Route::get('gestion/pais-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@paiseditar'); 
-  Route::post('gestion/editwhats/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@editarwhatsapp'); 
-  Route::get('gestion/whatsapp-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@whatsappeditar'); 
-  Route::post('gestion/actualizarpais/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarpais');
-  Route::get('gestion/eliminarpais/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@eliminarpais');
-  Route::get('gestion/eliminarwhatsapp/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@eliminarwhatsapp');
-
-  Route::get('gestion/paises/importExport', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExportmun');
-  Route::get('gestion/paises/downloadExcel/{type}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@downloadExcelmun');
-  Route::post('gestion/paises/importExcel', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExcelmun');
-
-   Route::post('gestion/creardepartamento', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@creardepartamento'); 
-   Route::post('gestion/crearwhats', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearwhats'); 
-  Route::get('gestion/ubicacion/departamentos/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@departamentos');
-  Route::get('gestion/departamento-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@departamentoeditar');
-  Route::post('gestion/actualizardepartamento/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizardepartamento');
-  Route::get('gestion/eliminardepartamento/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@eliminardepartamento');
-  
-
-  Route::get('gestion/crear-departamentos/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@creardepartamentos');
-  Route::get('gestion/crear-whatsapp', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearwhatsapp');
-  
-
-
-  Route::get('gestion/departamentos/importExport', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExportdep');
-  Route::get('gestion/departamentos/downloadExcel/{type}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@downloadExceldep');
-  Route::post('gestion/departamentos/importExcel', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExceldep');
-
-  Route::get('gestion/municipios/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@municipios');
+Route::get('gestion/pais-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@paiseditar'); 
+Route::post('gestion/editwhats/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@editarwhatsapp'); 
+Route::get('gestion/whatsapp-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@whatsappeditar'); 
+Route::post('gestion/actualizarpais/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarpais');
+Route::get('gestion/eliminarpais/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@eliminarpais');
+Route::get('gestion/eliminarwhatsapp/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@eliminarwhatsapp');
+Route::get('gestion/paises/importExport', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExportmun');
+Route::get('gestion/paises/downloadExcel/{type}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@downloadExcelmun');
+Route::post('gestion/paises/importExcel', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExcelmun');
+Route::post('gestion/creardepartamento', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@creardepartamento'); 
+Route::post('gestion/crearwhats', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearwhats'); 
+Route::get('gestion/ubicacion/departamentos/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@departamentos');
+Route::get('gestion/departamento-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@departamentoeditar');
+Route::post('gestion/actualizardepartamento/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizardepartamento');
+Route::get('gestion/eliminardepartamento/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@eliminardepartamento');
+Route::get('gestion/crear-departamentos/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@creardepartamentos');
+Route::get('gestion/crear-whatsapp', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearwhatsapp');
+Route::get('gestion/departamentos/importExport', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExportdep');
+Route::get('gestion/departamentos/downloadExcel/{type}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@downloadExceldep');
+Route::post('gestion/departamentos/importExcel', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@importExceldep');
+Route::get('gestion/municipios/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@municipios');
   Route::post('gestion/crearmunicipio/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@crearmunicipio');
   Route::get('gestion/municipio-editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@municipioeditar'); 
   Route::post('gestion/actualizarmunicipio/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@actualizarmunicipio');
@@ -289,6 +274,8 @@ Route::get('gestion/registro/eliminar-registro/{id}', 'DigitalsiteSaaS\Pagina\Ht
   $contenidos = DB::table('shuffle')->where('id', "=", $id)->get();  
   return View::make('pagina::actualizar-contshuffle')->with('contenidos', $contenidos);
  });
+
+
 
 
 Route::get('gestion/contenidos/selectores/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@consultaselector');
@@ -496,6 +483,7 @@ Route::group(['middleware' => ['web']], function (){
 
 Route::get('demos/autocomplete','DigitalsiteSaaS\Pagina\Http\WebController@autoCompletea');  
 Route::get('demos/autocompleteajax','DigitalsiteSaaS\Pagina\Http\WebController@autoCompleteAjax');
+Route::get('portafolio-web/{id}', 'DigitalsiteSaaS\Gestion\Http\GestionController@portafolio');
 });
 
 

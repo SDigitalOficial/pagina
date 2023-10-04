@@ -283,6 +283,16 @@ class ConfiguracionController extends Controller
      return View('pagina::configuracion.redes')->with('plantilla', $plantilla)->with('template', $template);
     }
 
+
+    public function tenants(){
+    if(!$this->tenantName){
+     $tenants = DB::table('tenancy.hostnames')->get(); 
+    }else{
+     
+    }
+     return View('pagina::configuracion.tenants')->with('tenants', $tenants);
+    }
+
     public function verubicacion(){
     if(!$this->tenantName){
     $pais = Paiscon::all();

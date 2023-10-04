@@ -500,7 +500,11 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
  }
 
  public function creartab(){
+  if(!$this->tenantName){
   $contenido = new Maxu;
+  }else{
+  $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Maxu;
+  }
   $contenido->titlecl = Input::get('titlecl');
   $contenido->slug = Str::slug($contenido->titlecl);
   $contenido->descriptioncl = Input::get('descriptioncl');
@@ -687,7 +691,11 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
 
  public function actualizartab($id){
   $input = Input::all();
+  if(!$this->tenantName){
   $contenido = Maxu::find($id);
+  }else{
+  $contenido = \DigitalsiteSaaS\Pagina\Tenant\Maxu::find($id);
+  }
   $contenido->state = Input::get('state');
   $contenido->titlecl = Input::get('titlecl');
   $contenido->slug = Str::slug($contenido->titlecl);
@@ -798,7 +806,11 @@ $contenido = \DigitalsiteSaaS\Pagina\Tenant\Select::find($id);
  }
 
  public function editartab($id){
+  if(!$this->tenantName){
   $contenido = Maxu::find($id);
+  }else{
+    $contenido = \DigitalsiteSaaS\Pagina\Tenant\Maxu::find($id);
+  }
   return view('pagina::editar-tabs')->with('contenido', $contenido);
  }
 
