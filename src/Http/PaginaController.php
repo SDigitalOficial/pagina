@@ -209,7 +209,8 @@ public function consultaform(){
 
 
  public function crearpagina(){
-
+  $idio = Input::get('idioma');
+  $slugcon = Input::get('pagina');
   if(!$this->tenantName){
   $pagina = new Page;
   $pagina->page = Input::get('pagina');
@@ -262,8 +263,8 @@ public function consultaform(){
  else{
   $pagina = new \DigitalsiteSaaS\Pagina\Tenant\Page;
   $pagina->page = Input::get('pagina');
-  $pagina->idio = Input::get('idioma');
-  $pagina->slugcon = Str::slug($pagina->page);
+
+  
   $pagina->slug = $pagina->idio.'/'.$pagina->slugcon;
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');

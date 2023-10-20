@@ -109,7 +109,7 @@
 
            <a href="paginas/editar/{{ $paga->id }}"><span id="tup" data-toggle="tooltip" data-placement="bottom" title="Editar página" class="btn btn-info"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
            @if($casta =='1')
-           <a href="#"><span id="tup" data-toggle="tooltip" data-placement="bottom" title="$pagina->id" class="btn btn-danger nodelete"><i class="hi hi-trash sidebar-nav-icon"></i></span></a>
+           <a href="#"><span id="tup" data-toggle="tooltip" data-placement="top" title="Eliminar página" class="btn btn-danger nodelete"><i class="hi hi-trash sidebar-nav-icon"></i></span></a>
            @else
            <script language="JavaScript">
            function confirmar ( mensaje ) {
@@ -118,9 +118,9 @@
            
            <a href="/gestion/contenidos/diagrama/update/{{ $paga->id }}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver diagramación" class="btn btn-success"><i class="fa fa-columns sidebar-nav-icon"></i></span>
         
-           <a href="<?=URL::to('gestion/paginas/eliminar/');?>/{{$paga->id}}" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')"><span id="tup" data-toggle="tooltip" data-placement="right" title="Eliminar página" class="btn btn-danger"><i class="hi hi-trash sidebar-nav-icon"></i></span></a>
+           <a href="<?=URL::to('gestion/paginas/eliminar/');?>/{{$paga->id}}" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')"><span id="tup" data-toggle="tooltip" data-placement="bottom" title="Eliminar página" class="btn btn-danger"><i class="hi hi-trash sidebar-nav-icon"></i></span></a>
            @endif
-           <a href="paginas/editarre/{{ $paga->id }}"><span id="tup" data-toggle="tooltip" data-placement="right" title="Replicar página" class="btn btn-info"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
+           <a href="paginas/editarre/{{ $paga->id }}"><span id="tup" data-toggle="tooltip" data-placement="right" title="Replicar página" class="btn btn-default"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
            </td>
           </tr>
         

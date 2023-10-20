@@ -90,7 +90,7 @@ use RegistersUsers;
       $password = Input::get('password');
       $passwordhash = Hash::make($password);
 
-      $crearusuario = DB::table('multitenant.users')->insert(['name' => $name,'email' => $email,'remember_token' => $passwordhash,'password' => $passwordhash,'rol_id' => '1']);
+      $crearusuario = DB::table('multitenant.users')->insert(['name' => $name,'email' => $email,'remember_token' => $passwordhash,'password' => $passwordhash,'rol_id' => '4']);
 
       $fqdn = sprintf('%s.%s', $fqdns, env('APP_DOMAIN'));
       $website = new Website;

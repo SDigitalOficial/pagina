@@ -897,7 +897,10 @@ public function editarempleo($id){
  }
 
  public function eliminartab($id){
+  if(!$this->tenantName){
   $contenido = Maxu::find($id);
+  }else{$contenido = \DigitalsiteSaaS\Pagina\Tenant\Maxu::find($id);
+  }
   $contenido->delete();
   return Redirect('gestion/contenidos/subtab/'.$contenido->content_id)->with('status', 'ok_delete');
  }
