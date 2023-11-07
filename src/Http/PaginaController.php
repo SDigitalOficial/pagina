@@ -262,10 +262,8 @@ public function consultaform(){
  }
  else{
   $pagina = new \DigitalsiteSaaS\Pagina\Tenant\Page;
-  $pagina->page = Input::get('pagina');
-
-  
-  $pagina->slug = $pagina->idio.'/'.$pagina->slugcon;
+  $pagina->page = Input::get('pagina');  
+  $pagina->slug = $idio.'/'.$slugcon;
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->titulo = Input::get('titulo');
