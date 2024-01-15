@@ -98,7 +98,7 @@
 
 
 
-        <a href="<?=URL::to('gestion/comercial/editar-recepcion/');?>/"><span  id="tip" data-toggle="tooltip" data-placement="left" title="Editar registro" class="btn btn-primary"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
+        <a href="<?=URL::to('gestion/editar-tenants');?>/{{$tenants->id}}"><span  id="tip" data-toggle="tooltip" data-placement="left" title="Editar registro" class="btn btn-primary"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
 
 
 

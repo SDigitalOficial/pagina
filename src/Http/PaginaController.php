@@ -210,7 +210,7 @@ public function consultaform(){
 
  public function crearpagina(){
   $idio = Input::get('idioma');
-  $slugcon = Input::get('pagina');
+
   if(!$this->tenantName){
   $pagina = new Page;
   $pagina->page = Input::get('pagina');
@@ -262,7 +262,12 @@ public function consultaform(){
  else{
   $pagina = new \DigitalsiteSaaS\Pagina\Tenant\Page;
   $pagina->page = Input::get('pagina');  
+  $slugcon = Str::slug($pagina->page);
+  if($idio == 'ne'){
+  $pagina->slug = $slugcon;
+  }else{
   $pagina->slug = $idio.'/'.$slugcon;
+  }
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->titulo = Input::get('titulo');
@@ -317,9 +322,13 @@ public function consultaform(){
   $pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::find($id);
   }
   $idio = Input::get('idioma');
-  $slugcon = Input::get('pagina');
   $pagina->page = Input::get('pagina');
+  $slugcon = Str::slug($pagina->page);
+  if($idio == 'ne'){
+  $pagina->slug = $slugcon;
+  }else{
   $pagina->slug = $idio.'/'.$slugcon;
+  }
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->description = Input::get('descripcion');
   $pagina->titulo = Input::get('titulo');

@@ -12,6 +12,7 @@ Route::get('editar/contrasena', 'DigitalsiteSaaS\Pagina\Http\PaginaController@ed
 Route::get('actualizar/host', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@actualizarhost');
 Route::post('suscripcion/actualizarhost/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@updatehost');
 Route::get('gestion/contenidos/tenants', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@tenants');
+Route::get('gestion/editar-tenants/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@editartenants');
 
 
 });

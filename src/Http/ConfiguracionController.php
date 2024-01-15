@@ -286,11 +286,21 @@ class ConfiguracionController extends Controller
 
     public function tenants(){
     if(!$this->tenantName){
-     $tenants = DB::table('tenancy.hostnames')->get(); 
+    $tenants = DB::table('tenancy.hostnames')->get(); 
     }else{
-     
+     $tenants = DB::table('tenancy.hostnames')->get(); 
     }
      return View('pagina::configuracion.tenants')->with('tenants', $tenants);
+    }
+
+    public function editartenants($id){
+    if(!$this->tenantName){
+    $tenants = DB::table('tenancy.hostnames')->where('id','=',$id)->get(); 
+    }else{
+     $tenants = DB::table('tenancy.hostnames')->where('id','=',$id)->get(); 
+    }
+   
+     return View('pagina::configuracion.editartenants')->with('tenants', $tenants);
     }
 
     public function verubicacion(){
