@@ -137,7 +137,7 @@
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
                                             <div class="col-md-9">
                                                 {{ Form::select('idioma', [
-                                                 '' => 'Neutro',
+                                                 'ne' => 'Neutro',
                                                  'es' => 'Español',
                                                  'en' => 'Ingles',
                                                  'fr' => 'Frances'

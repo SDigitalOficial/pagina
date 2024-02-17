@@ -99,6 +99,9 @@
                                             </div>
                                         </div>
 
+                                        
+                                        @endif
+
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
                                             <div class="col-md-9">
@@ -110,9 +113,6 @@
                                                  ], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
-                                        @endif
-
-                                    
 
 
                                          <div class="form-group">

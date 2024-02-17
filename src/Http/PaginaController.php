@@ -268,6 +268,7 @@ public function consultaform(){
   }else{
   $pagina->slug = $idio.'/'.$slugcon;
   }
+
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');
   $pagina->titulo = Input::get('titulo');
