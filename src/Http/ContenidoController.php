@@ -268,6 +268,60 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
   return view('pagina::editar-contenido')->with('contenido', $contenido)->with('posicion', $posicion)->with('notador', $notador)->with('roles', $roles)->with('rols', $rols)->with('categoria', $categoria)->with('contenidoweb', $contenidoweb)->with('formularios', $formularios)->with('producto', $producto)->with('contenidowebs', $contenidowebs)->with('category', $category);
  }
 
+
+ public function editartemp($id){
+  if(!$this->tenantName){
+ $formularios = Content::where('type','=','formulas')->get();
+ $category = Category::all();
+  $contenido = Content::find($id);
+  $producto = Producto::all();
+  $contenidoweb = Categoria::join('contents','contents.contents','=','categoriapro.id')
+  ->where('contents.id', $id)
+  ->get();
+
+  $contenidowebs = Category::join('contents','contents.imageal','=','categoriessd.id')
+  ->where('contents.id', $id)
+  ->get();
+
+  $categoria = Categoria::all();
+  $roles = DB::table('roles_comunidad')->get();
+  $notador = Content::where('id','=',$id)->get();
+  foreach ($notador as $notadores){
+  $ideman = $notadores->roles_id;
+  $id_str = explode(',', $ideman);
+  $rols = DB::table('roles_comunidad')->whereIn('id', $id_str)->get();
+   }
+  
+  $posicion = DB::table('posicion')->pluck('posicion');
+
+  }else{
+  $formularios = \DigitalsiteSaaS\Pagina\Tenant\Content::where('type','=','formulas')->get();
+  $categoria = \DigitalsiteSaaS\Carrito\Tenant\Categoria::all();
+  $producto = \DigitalsiteSaaS\Gestion\Tenant\Producto::all();
+  $contenido = \DigitalsiteSaaS\Pagina\Tenant\Content::find($id);
+  $category = \DigitalsiteSaaS\Carrito\Tenant\Category::all();
+  $contenidoweb = \DigitalsiteSaaS\Pagina\Tenant\Categoria::join('contents','contents.contents','=','categoriapro.id')
+  ->where('contents.id', $id)
+  ->get();
+  $contenidowebs = \DigitalsiteSaaS\Carrito\Tenant\Category::join('contents','contents.imageal','=','categoriessd.id')
+  ->where('contents.id', $id)
+  ->get();
+
+  $roles = DB::table('roles_comunidad')->get();
+  $notador = \DigitalsiteSaaS\Pagina\Tenant\Content::where('id','=',$id)->get();
+  foreach ($notador as $notadores){
+  $ideman = $notadores->roles_id;
+  $id_str = explode(',', $ideman);
+  $rols = DB::table('roles_comunidad')->whereIn('id', $id_str)->get();
+   }
+ 
+  $posicion = DB::table('posicion')->pluck('posicion');
+ 
+  }
+
+  return view('pagina::editar-contenidotemp')->with('contenido', $contenido)->with('posicion', $posicion)->with('notador', $notador)->with('roles', $roles)->with('rols', $rols)->with('categoria', $categoria)->with('contenidoweb', $contenidoweb)->with('formularios', $formularios)->with('producto', $producto)->with('contenidowebs', $contenidowebs)->with('category', $category);
+ }
+
  public function editarbanner($id){
   $banners = Baner::find($id);
   return view('pagina::editar-baner')->with('banners', $banners);
@@ -309,6 +363,46 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
   $contenido->template = Input::get('template');
   $contenido->save();
   return Redirect('gestion/contenidos/digitales/'.$contenido->page_id)->with('status', 'ok_update');
+ }
+
+ public function actualizartemp($id){
+  $redireccion = Input::get('redireccion');
+  $notaweb = Input::get('tagsa');
+  $data = json_encode($notaweb, true);
+  $vowels = array('"', '[', ']');
+  $onlyconsonants = str_replace($vowels, '', $data);
+  $input = Input::all();
+  if(!$this->tenantName){
+  $contenido = Content::find($id);
+  }else{
+  $contenido = \DigitalsiteSaaS\Pagina\Tenant\Content::find($id);
+  }
+  $contenido->title = Input::get('titulo');
+  $contenido->slugcon = Str::slug($contenido->title);
+  $contenido->description = Input::get('descripcion');
+  $contenido->content = Input::get('contenido');
+  $contenido->contents = Input::get('contenidos');
+  $contenido->position = Input::get('posicion');
+  $contenido->image = Input::get('FilePath');
+  $contenido->imageal = Input::get('imageal');
+  $contenido->video = Input::get('video');
+  $contenido->idioma = Input::get('idioma');
+  $contenido->responsive = Input::get('responsive');
+  $contenido->animacion = Input::get('animacion');
+  $contenido->url = Input::get('enlace');
+  if($onlyconsonants == 'null'){
+  $contenido->roles_id = Auth::user()->id;;
+  }
+  else{
+  $contenido->roles_id = $onlyconsonants;
+  }
+  $contenido->type = Input::get('tipo');
+  $contenido->level = Input::get('nivel');
+  $contenido->nivel = Input::get('nivelpos');
+  $contenido->template = Input::get('template');
+  $contenido->save();
+  
+  return Redirect($redireccion)->with('status', 'ok_update');
  }
 
  public function creardiagrama(){
@@ -398,6 +492,17 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
   }
   $contenido->delete();
   return Redirect('gestion/contenidos/digitales/'.$contenido->page_id)->with('status', 'ok_delete');
+ }
+
+
+  public function eliminartemp($id){
+  if(!$this->tenantName){
+  $contenido = Content::find($id);
+  }else{
+  $contenido = \DigitalsiteSaaS\Pagina\Tenant\Content::find($id);
+  }
+  $contenido->delete();
+  return back();
  }
 
  public function crearblog(){

@@ -103,6 +103,7 @@
           <td>{{$paga->created_at}}</td>
           <td>{{$paga->updated_at}}</td>
           <td>
+            <a href="/editor/sitecms?page={{$paga->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-eye_open"></i></span></a>
            <a href="/gestion/paginas/subpagina/{{ $paga->id }}" id="tip" data-toggle="tooltip" data-placement="left" title="Crear subpágina" class="open-Modal btn btn-primary"><i class="fa fa-files-o sidebar-nav-icon"></i></a>
 
            <a href="contenidos/digitales/{{$paga->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-eye_open"></i></span></a>
@@ -135,7 +136,7 @@
                 <td>{{$subcategory->titulo}}</td>
                 <td>{{$subcategory->created_at}}</td>
                 <td>{{$subcategory->updated_at}}</td>
-                <td>
+                <td><a href="editor/sitecms?page={{$subcategory->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-eye_open"></i></span></a>
                  <a href="contenidos/digitales/{{$subcategory->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-eye_open"></i></span></a>
                  <a href="paginas/editar/{{ $subcategory->id }}"><span id="tup" data-toggle="tooltip" data-placement="bottom" title="Editar página" class="btn btn-info"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
                  @if($casta =='1')

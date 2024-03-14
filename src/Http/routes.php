@@ -184,6 +184,7 @@ Route::group(['middleware' => ['auths','administrador']], function (){
  Route::post('gestion/contenidos/crearselector', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearselector');
  Route::post('gestion/contenidos/crearbaner', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearbaner');
  Route::get('gestion/contenidos/eliminar/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminar');
+ Route::get('gestion/contenidos/eliminartemp/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminartemp');
  Route::post('gestion/contenidos/crearblog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearblog');
  Route::get('gestion/contenidos/eliminarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarblog');
  Route::get('gestion/contenidos/eliminarinput/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarinput');
@@ -218,8 +219,10 @@ Route::group(['middleware' => ['auths','administrador']], function (){
  Route::post('gestion/contenidos/actualizarcarouselimg/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarcarouselimg');
  Route::post('gestion/contenidos/actualizarinput/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarinput');
  Route::get('gestion/contenidos/editar/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@editar');
+ Route::get('gestion/contenidos/editartemp/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@editartemp');
  Route::get('gestion/contenidos/editar-banner/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@editarbanner');
  Route::post('gestion/contenidos/actualizar/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizar');
+ Route::post('gestion/contenidos/actualizartemp/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizartemp');
  Route::post('gestion/contenidos/actualizarbanner/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarbanner');
  Route::get('gestion/contenidos/subtab/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@subtab');
  Route::get('gestion/contenidos/subempleo/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@subempleo');
@@ -454,8 +457,8 @@ Route::get('/ubicacion/ajax-subcatweb',function(){
 
 
 Route::group(['middleware' => ['web']], function (){
-  Route::get('mensajes/estadisticas', 'DigitalsiteSaaS\Pagina\Http\WebController@estadistica');
-     Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
+Route::get('mensajes/estadisticas', 'DigitalsiteSaaS\Pagina\Http\WebController@estadistica');
+Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
   Route::get('autocomplete/web',array('as'=>'autocomplete/web','uses'=>'DigitalsiteSaaS\Pagina\Http\WebController@autocomplete'));
   Route::get('/respuesta/error', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@resperror');
   Route::post('respuesta/informacion', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@informacion');
@@ -485,6 +488,28 @@ Route::group(['middleware' => ['web']], function (){
 Route::get('demos/autocomplete','DigitalsiteSaaS\Pagina\Http\WebController@autoCompletea');  
 Route::get('demos/autocompleteajax','DigitalsiteSaaS\Pagina\Http\WebController@autoCompleteAjax');
 Route::get('portafolio-web/{id}', 'DigitalsiteSaaS\Gestion\Http\GestionController@portafolio');
+
+
+Route::get('/editor/sitecms', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@index');
+Route::post('/editor/sitecms', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@index');
+
+Route::post('projects/1', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@all');
+Route::post('productos/all', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@all');
+Route::post('productos/alltrait', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@alltrait');
+Route::get('productos/alltrait', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@alltrait');
+Route::post('productos/allupload', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@upload');
+Route::post('productos/saveimage', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@saveimage');
+Route::get('gestor/templates', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@vistatemplates');
+Route::get('gestor/crear-template', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@creartemplate');
+Route::get('gestion/editar-templategrape/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@editartemplate');
+Route::post('gestion/creartemplate', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@create');
+Route::get('gestion/ver-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@vercomponentes');
+Route::get('gestion/editar-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@editarcomponentes');
+Route::get('gestion/crear-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@crearcomponentes');
+Route::post('gestion/crear-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@crearcomponentesweb');
+Route::post('gestion/editar-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@editarcomponentesweb');
+
+
 });
 
 
