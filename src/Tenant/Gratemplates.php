@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gratemplates extends Model{
 		use UsesTenantConnection;
- protected $table = 'grape_templates';
+ protected $table = 'grape_componentes';
  public $timestamps = false;
 }
  

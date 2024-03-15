@@ -91,7 +91,7 @@ class GrapejsController extends Controller
 
     public function vercomponentes($id){
      if(!$this->tenantName){
-     $componentes = Templates::where('template_id','=',$id)->get();
+     $componentes = Gratemplates::where('template_id','=',$id)->get();
      }else{
     $componentes = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::where('template_id','=',$id)->get();
      }
