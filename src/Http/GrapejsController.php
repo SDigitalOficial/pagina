@@ -157,9 +157,9 @@ class GrapejsController extends Controller
     public function create()
     {
       if(!$this->tenantName){
-      $contenido = new Plantilla;
+      $contenido = new GrapeTemp;
       }else{
-      $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Plantilla;  
+      $contenido = new \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp;  
       }
       $contenido->plantilla = Input::get('nombre');
       $contenido->css = Input::get('css');
