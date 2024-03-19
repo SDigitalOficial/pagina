@@ -100,6 +100,10 @@ class GrapejsController extends Controller
     public function vistatemplates(){
      if(!$this->tenantName){
      $templates = GrapeTemp::all();
+     $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::join('grape_template','grape_select.template','=','grape_template.id')
+    ->where('grape_select.id', 1)
+    ->get();
+
      }else{
     $templates = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::all();
 
