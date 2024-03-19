@@ -38,9 +38,10 @@ class GrapejsController extends Controller
     public function index(Request $request)
     {
     $page = $request->get('page');
-    $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
-     foreach($select as $select){
+    
      if(!$this->tenantName){
+     $select = Grapeselect::where('id','=', '1')->get();
+     foreach($select as $select){
      $contenidos = Gratemplates::all();
      $pages = Page::where('id','=',$page)->get();
      $plantillas = GrapeTemp::where('id','=',$select->template)->get();
