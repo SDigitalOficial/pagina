@@ -122,7 +122,7 @@ class GrapejsController extends Controller
      if(!$this->tenantName){
      $componentes = Gratemplates::where('template_id','=',$id)->get();
      }else{
-    $componentes = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::where('template_id','=',$id)->get();
+    $componentes = Gratemplates::where('template_id','=',$id)->get();
      }
 
      return View('pagina::grapejs.componentes')->with('componentes', $componentes);
@@ -141,7 +141,7 @@ class GrapejsController extends Controller
      if(!$this->tenantName){
       $contenido = new Gratemplates;
       }else{
-      $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Gratemplates;  
+      $contenido = new Gratemplates;  
       }
       $contenido->label = Input::get('nombre');
       $contenido->media = Input::get('imagen');
@@ -159,7 +159,7 @@ class GrapejsController extends Controller
      if(!$this->tenantName){
      $componentes = Gratemplates::where('id','=',$id)->get();
      }else{
-    $componentes = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::where('id','=',$id)->get();
+    $componentes = Gratemplates::where('id','=',$id)->get();
      }
 
      return View('pagina::grapejs.editarcomponentes')->with('componentes', $componentes);
@@ -170,7 +170,7 @@ class GrapejsController extends Controller
      if(!$this->tenantName){
      $componentes = GrapeTemp::where('id','=',$id)->get();
      }else{
-    $componentes = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=',$id)->get();
+    $componentes = GrapeTemp::where('id','=',$id)->get();
      }
 
      return View('pagina::grapejs.editartemplate')->with('componentes', $componentes);
