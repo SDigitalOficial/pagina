@@ -222,7 +222,6 @@ public function consultaform(){
   $pagina->palabras = Input::get('palabras');
   $pagina->posti = Input::get('posti');
   $pagina->posta = Input::get('posicion');
-  $pagina->robot = '1';
   $pagina->nivel = Input::get('nivel');
   $pagina->categoria = Input::get('categoria');
   $pagina->sitio = Input::get('sitio');
@@ -275,7 +274,6 @@ public function consultaform(){
   $pagina->palabras = Input::get('palabras');
   $pagina->posti = Input::get('posti');
   $pagina->nivel = Input::get('nivel');
-  $pagina->robot = '1';
   $pagina->categoria = Input::get('categoria');
   $pagina->sitio = Input::get('sitio');
   $pagina->idioma = Input::get('idioma');
@@ -335,7 +333,6 @@ public function consultaform(){
   $pagina->titulo = Input::get('titulo');
   $pagina->nivel = Input::get('nivel');
   $pagina->posta = Input::get('posicion');
-  $pagina->robot = '1';
   $pagina->categoria = Input::get('categoria');
   $pagina->sitio = Input::get('sitio');
   $pagina->idioma = Input::get('idioma');
