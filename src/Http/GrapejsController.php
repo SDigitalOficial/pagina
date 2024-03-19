@@ -41,6 +41,7 @@ class GrapejsController extends Controller
      if(!$this->tenantName){
      $contenidos = Gratemplates::all();
      $pages = Page::where('id','=',$page)->get();
+     $plantillas = GrapeTemp::where('id','=',$select->template)->get();
      $assets = GrapeImage::all();
      }else{
      $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
