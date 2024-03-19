@@ -105,7 +105,7 @@ class GrapejsController extends Controller
     ->get();
 
      }else{
-    $templates = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::all();
+    $templates = GrapeTemp::all();
 
     $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::join('grape_template','grape_select.template','=','grape_template.id')
     ->where('grape_select.id', 1)
