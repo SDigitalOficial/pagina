@@ -63,7 +63,7 @@
 
 
  <div class="container">
-   <a href="<?=URL::to('/gestion/crear-componentes');?>/{{Request::segment(3)}}"><button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-star"></span> Crear Template</button></a>
+   <a href="<?=URL::to('/gestion/crear-componentes');?>/{{Request::segment(3)}}"><button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-star"></span> Crear Componente</button></a>
   </div>
 
 <br>

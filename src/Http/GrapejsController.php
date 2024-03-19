@@ -10,8 +10,10 @@ use Input;
  use Hyn\Tenancy\Models\Website;
  use Hyn\Tenancy\Repositories\HostnameRepository;
  use Hyn\Tenancy\Repositories\WebsiteRepository;
-
+use DB;
 use Illuminate\Http\Request;
+use File;
+use Storage;
 
 class GrapejsController extends Controller
 {
@@ -32,15 +34,22 @@ class GrapejsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+    $page = $request->get('page');
      if(!$this->tenantName){
      $contenidos = Gratemplates::all();
-     $pages = Page::all();
+     $pages = Page::where('id','=',$page)->get();
+     $assets = GrapeImage::all();
      }else{
-     $contenidos = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::where('template_id','=',1)->get(); 
-     $pages = \DigitalsiteSaaS\Pagina\Tenant\Page::all();
-     $plantillas = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=','1')->get();
+     $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
+     foreach($select as $select){
+     $contenidos = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::where('template_id','=',$select->template)->get(); 
+     $pages = \DigitalsiteSaaS\Pagina\Tenant\Page::where('id','=',$page)->get();
+     $plantillas = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=',$select->template)->get();
+     $assets = \DigitalsiteSaaS\Pagina\Tenant\GrapeImage::all();
+
+     }
      } 
 
 
@@ -57,7 +66,7 @@ class GrapejsController extends Controller
       });
       
 
-    return View('pagina::grapejs.grapejs')->with('contenidos', $contenidos)->with('pages', $pages)->with('plantillas', $plantillas);
+    return View('pagina::grapejs.grapejs')->with('contenidos', $contenidos)->with('pages', $pages)->with('plantillas', $plantillas)->with('assets', $assets);
       
     }
 
@@ -67,7 +76,7 @@ class GrapejsController extends Controller
       ->update(['page_data' => $request->get('html')]);
       }else{
        \DigitalsiteSaaS\Pagina\Tenant\Page::where('id', $request->get('pagesold'))
-      ->update(['page_data' => $request->get('html')]); 
+      ->update(['page_data' => $request->get('html'),'page_css' => $request->get('css'),'page_js' => $request->get('js')]); 
       }
      }
 
@@ -86,9 +95,14 @@ class GrapejsController extends Controller
      $templates = GrapeTemp::all();
      }else{
     $templates = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::all();
+
+    $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::join('grape_template','grape_select.template','=','grape_template.id')
+    ->where('grape_select.id', 1)
+    ->get();
+
      }
 
-     return View('pagina::grapejs.templates')->with('templates', $templates);
+     return View('pagina::grapejs.templates')->with('templates', $templates)->with('select', $select);
       
     }
 
@@ -141,11 +155,90 @@ class GrapejsController extends Controller
       
     }
 
+      public function editartemplate($id){
+     if(!$this->tenantName){
+     $componentes = GrapeTemp::where('id','=',$id)->get();
+     }else{
+    $componentes = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=',$id)->get();
+     }
+
+     return View('pagina::grapejs.editartemplate')->with('componentes', $componentes);
+      
+    }
+
     public function creartemplate(){
 
      return View('pagina::grapejs.crear-template');
       
     }
+
+    public function grapeupload(Request $request){
+
+$dominio =  $_SERVER['HTTP_HOST'];
+$hostname = DB::table('tenancy.hostnames')->where('fqdn','=',$dominio)->get();
+
+foreach ($hostname as $hostname) {
+ $websites = DB::table('tenancy.websites')->where('id','=',$hostname->website_id)->get();   
+}
+foreach($websites as $websites){
+$salida = $websites->uuid;
+}
+
+
+    if($_FILES)
+{
+$resultArray = array();
+    foreach ( $_FILES as $file){
+                $fileName = $file['name'];
+                $tmpName = $file['tmp_name'];
+                $fileSize = $file['size'];
+                $fileType = $file['type'];
+                if ($file['error'] != UPLOAD_ERR_OK)
+                {
+                        error_log($file['error']);
+                        echo JSON_encode(null);
+                }
+                $fp = fopen($tmpName, 'r');
+                $content = fread($fp, filesize($tmpName));
+                fclose($fp);
+                $result=array(
+                        'name'=>$file['name'],
+                        'type'=>'image',
+                        'src'=>"data:".$fileType.";base64,".base64_encode($content),
+                        'height'=>350,
+                        'width'=>250
+                ); 
+
+    $uploadDir = public_path('saas/'.$salida);
+      $uploadDirsave = '/saas/'.$salida.'/'.$file['name'];
+$targetPath = $uploadDir.'/'. $fileName;
+$lata = move_uploaded_file($tmpName, $targetPath);
+
+
+if(!$this->tenantName){
+ GrapeImage::insert([
+  'image' => $uploadDirsave
+ ]);
+}else{
+\DigitalsiteSaaS\Pagina\Tenant\GrapeImage::insert([
+  'image' => $uploadDirsave
+ ]);
+}
+
+           
+
+         
+
+                array_push($resultArray,$result);
+    }    
+$response = array( 'data' => $resultArray );
+echo json_encode($response);
+}
+
+    }
+
+
+
 
     public function editaremplate(){
 
@@ -188,6 +281,33 @@ class GrapejsController extends Controller
      $contenido->template_id = Input::get('template');
      $contenido->save();
      return Redirect('gestion/ver-componentes/'.$contenido->template_id)->with('status', 'ok_create');
+    }
+
+
+     public function actualizatemplate(){
+     $input = Input::all();
+     if(!$this->tenantName){
+     $contenido = Grapeselect::find(1);
+     }else{
+     $contenido = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::find(1);
+     }
+     $contenido->template = Input::get('template');
+     $contenido->save();
+     return Redirect('gestor/templates')->with('status', 'ok_create');
+    }
+
+      public function editartemplateweb($id){
+     $input = Input::all();
+     if(!$this->tenantName){
+     $contenido = GrapeTemp::find($id);
+     }else{
+     $contenido = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::find($id);
+     }
+     $contenido->plantilla = Input::get('nombre');
+      $contenido->css = Input::get('css');
+      $contenido->javascript = Input::get('javascript');
+      $contenido->save();
+     return Redirect('gestor/templates/')->with('status', 'ok_create');
     }
     /**
      * Store a newly created resource in storage.

@@ -22,13 +22,19 @@
 	
 
 	<body>
-
+<style type="text/css">
+  @foreach($pages as $pagesa)
+    {!!$pagesa->page_css!!}
+    @endforeach
+</style>
 
 
   <div id="gjs">
     @foreach($pages as $pages)
     {!!$pages->page_data!!}
     @endforeach
+
+
 
   </div>
 
@@ -82,11 +88,47 @@ const editor = grapesjs.init({
 
    assetManager: {
    
-    // Upload endpoint, set `false` to disable upload, default `false`
-    upload: '/productos/allupload',
-    autoAdd: true,
-    // The name used in POST to pass uploaded files, default: `'files'`
-    uploadName: 'files',
+    storageType     : '',
+   storeOnChange  : true,
+   storeAfterUpload  : true,
+   upload: 'saas',
+   assets       : [
+
+     @foreach($assets as $assetss)
+    '{!!$assetss->image!!}',
+    @endforeach  
+     // Pass an object with your properties
+    ],
+    uploadFile: function(e) {
+   var files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+var formData = new FormData();
+   for(var i in files){
+           formData.append('file-'+i, files[i]) //containing all the selected images from local
+   }
+
+$.ajax({
+  headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+url: '/grape/upload',
+type: 'POST',
+       data: formData,
+       contentType:false,
+crossDomain: true,
+dataType: 'json',
+mimeType: "multipart/form-data",
+processData:false,
+
+success: function(result){
+               var myJSON = [];
+               $.each( result['data'], function( key, value ) {
+                       myJSON[key] = value;    
+               });
+               var images = myJSON;    
+         editor.AssetManager.add(images); 
+           }
+});
+},
    
   },
 
@@ -107,11 +149,7 @@ const editor = grapesjs.init({
     
   },
 
-  assetManager: {
-    assets: [],
-    
-  }
-
+ 
 
 
 });
@@ -148,6 +186,7 @@ const searchParams = new URLSearchParams(window.location.search);
    //storing values to variables
    var htmldata = editor.getHtml();
    var cssdata = editor.getCss();
+   var jsdata = editor.getJs();
     var page = searchParams.get('page');
     $.ajax({
             url: '/productos/all',
@@ -156,6 +195,7 @@ const searchParams = new URLSearchParams(window.location.search);
              pagesold: searchParams.get('page'),
              html:htmldata,
              css: cssdata,
+             js: jsdata,
              _token: $('meta[name="csrf-token"]').attr('content'),
 
             }
@@ -195,28 +235,11 @@ $(document).ready(function(){
          });
 </script>
 
-<!--
-<script type="text/javascript">
-  $.ajax({
-url: 'upload_image.php',
-type: 'POST',
-       data: formData,
-       contentType:false,
-crossDomain: true,
-dataType: 'json',
-mimeType: "multipart/form-data",
-processData:false,
-success: function(result){
-               var myJSON = [];
-               $.each( result['data'], function( key, value ) {
-                       myJSON[key] = value;    
-               });
-               var images = myJSON;    
-         editor.AssetManager.add(images); 
-           }
-});
-</script>
--->
+  
+
+
+
+
 
 
 <script type="text/javascript">

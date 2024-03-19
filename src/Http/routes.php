@@ -508,6 +508,11 @@ Route::get('gestion/editar-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\Grape
 Route::get('gestion/crear-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@crearcomponentes');
 Route::post('gestion/crear-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@crearcomponentesweb');
 Route::post('gestion/editar-componentes/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@editarcomponentesweb');
+Route::post('gestion/editar-template/{id}', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@editartemplateweb');
+Route::post('gestion//actualizar/template', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@actualizatemplate');
+
+Route::post('grape/upload', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@grapeupload');
+Route::get('grape/upload', 'DigitalsiteSaaS\Pagina\Http\GrapejsController@grapeupload');
 
 
 });

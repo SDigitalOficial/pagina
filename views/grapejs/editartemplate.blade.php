@@ -83,66 +83,43 @@
                                         <div class="block-options pull-right">
                                             
                                         </div>
-                                        <h2><strong>Crear</strong> Componentes</h2>
+                                        <h2><strong>Crear</strong> Template SiteCms</h2>
                                     </div>
                                     <!-- END Form Elements Title -->
                 
-                                   
+                                   /gestion/editar-componentes',Request::segment(3)
 
                                     <!-- Basic Form Elements Content -->
                                      
                                     
-                                     {{ Form::open(array('files' => true,'method' => 'POST','class' => 'form-horizontal','id' => 'defaultForm', 'url' => array('/gestion/editar-componentes',Request::segment(3))))}}
+                                     {{ Form::open(array('files' => true,'method' => 'POST','class' => 'form-horizontal','id' => 'defaultForm', 'url' => array('/gestion/editar-template',Request::segment(3)))) }}
 
-                                     @foreach($componentes as $componentes)
-                                      @endforeach
-    
+                                            @foreach($componentes as $componentes)
+                                            @endforeach
                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-text-input">Nombre Componente</label>
+                                            <label class="col-md-3 control-label" for="example-text-input">Nombre</label>
                                             <div class="col-md-9">
-                                                {{Form::text('nombre', $componentes->label, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
+                                                {{Form::text('nombre', $componentes->plantilla, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-text-input">Imagen</label>
+                                            <label class="col-md-3 control-label" for="example-text-input">URL's CSS</label>
                                             <div class="col-md-9">
-                                                {{Form::text('imagen', $componentes->media, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
+                                                {{Form::textarea('css', $componentes->css, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-text-input">Código HTML</label>
+                                            <label class="col-md-3 control-label" for="example-text-input">URL's Javascript</label>
                                             <div class="col-md-9">
-                                                {{Form::textarea('contenido', $componentes->content, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
+                                                {{Form::textarea('javascript', $componentes->javascript, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-text-input">Categoria</label>
-                                            <div class="col-md-9">
-                                             {{ Form::select('categoria', [$componentes->category => $componentes->category,
-                                             'Imagen' => 'Imagen',
-                                             'Texto' => 'Texto',
-                                             'Carousel' => 'Carousel',
-                                             'Diagramacion' => 'Diagramación',
-                                             'Otros' => 'Otros'], null, array('class' => 'form-control')) }}
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-text-input">Estado Componente</label>
-                                            <div class="col-md-9">
-                                             {{ Form::select('estado', [$componentes->activate => $componentes->activate,
-                                             'active' => 'Active',
-                                             'inactive' => 'Inactive'], null, array('class' => 'form-control')) }}
-                                            </div>
-                                        </div>
-
-                                      
-                                    {{Form::hidden('template', $componentes->template_id, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
+                                
                                        
-                                      
+                                       
 
                                         <div class="form-group form-actions">
                                             <div class="col-md-9 col-md-offset-3">

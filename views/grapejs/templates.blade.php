@@ -62,6 +62,57 @@
 
 
 
+
+
+<div class="container">
+  <div class="row">
+                            <div class="col-md-12">
+                                <!-- Basic Form Elements Block -->
+                                <div class="block">
+                                    <!-- Basic Form Elements Title -->
+                                    <div class="block-title">
+                                        <div class="block-options pull-right">
+                                            
+                                        </div>
+                                        <h2><strong>Template</strong> Seleccionado</h2>
+                                    </div>
+                                    <!-- END Form Elements Title -->
+                
+                                   
+
+                                    <!-- Basic Form Elements Content -->
+                                     
+                                    
+                                     {{ Form::open(array('method' => 'POST','class' => 'form-horizontal','id' => 'defaultForm1', 'url' => array('gestion//actualizar/template'))) }}
+
+                                       <label for="cars">Seleccionar Template</label>
+                                        <select name="template" id="template" class="form-control">
+                                        @foreach($select as $select)
+                                        <option value="{{$select->id}}" selected>{{$select->plantilla}}</option>
+                                        @endforeach
+                                        @foreach($templates as $templatesa)
+                                        <option value="{{$templatesa->id}}">{{$templatesa->plantilla}}</option>
+                                        @endforeach
+                                        </select>
+    
+                                      
+                                       
+
+                                        <div class="form-group form-actions">
+                                            <div class="col-md-9 col-md-offset-1">
+                                                <br>
+                                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Seleccionar</button>
+                                                <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Cancelar</button>
+                                            </div>
+                                        </div>
+                                    {{ Form::close() }}
+                      
+                                </div>
+                                <!-- END Basic Form Elements Block -->
+                            </div>
+                          </div>
+                          
+</div>
  <div class="container">
    <a href="<?=URL::to('/gestor/crear-template');?>"><button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-star"></span> Crear Template</button></a>
   </div>
@@ -70,8 +121,6 @@
 
 <div class="container">
   
-
-
  <div class="block full">
                             <div class="block-title">
                                 <h2><strong>Templates</strong> registrados</h2>
@@ -102,9 +151,9 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
 
-                                                    <a href="<?=URL::to('gestion/ver-componentes');?>/{{$templates->id}}"><span  id="tip" data-toggle="tooltip" data-placement="left" title="Editar template" class="btn btn-primary"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
+                                                    <a href="<?=URL::to('gestion/ver-componentes');?>/{{$templates->id}}"><span  id="tip" data-toggle="tooltip" data-placement="left" title="Ver Componentes" class="btn btn-warning"><i class="gi gi-sort sidebar-nav-icon"></i></span></a>
                                            
-                                           <a href="<?=URL::to('gestion/editar-templategrape');?>/{{$templates->id}}"><span  id="tip" data-toggle="tooltip" data-placement="left" title="Editar template" class="btn btn-primary"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
+                                           <a href="<?=URL::to('gestion/editar-templategrape');?>/{{$templates->id}}"><span  id="tip" data-toggle="tooltip" data-placement="top" title="Editar template" class="btn btn-primary"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
                                            
                                             
                                          
