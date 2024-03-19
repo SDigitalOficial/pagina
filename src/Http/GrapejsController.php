@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use DigitalsiteSaaS\Pagina\Page;
 use DigitalsiteSaaS\Pagina\Gratemplates;
 use DigitalsiteSaaS\Pagina\GrapeTemp;
+use DigitalsiteSaaS\Pagina\GrapeImage;
 use Input;
  use Hyn\Tenancy\Models\Hostname;
  use Hyn\Tenancy\Models\Website;
