@@ -6,6 +6,7 @@ use DigitalsiteSaaS\Pagina\Page;
 use DigitalsiteSaaS\Pagina\Gratemplates;
 use DigitalsiteSaaS\Pagina\GrapeTemp;
 use DigitalsiteSaaS\Pagina\GrapeImage;
+use DigitalsiteSaaS\Pagina\Grapeselect;
 use Input;
  use Hyn\Tenancy\Models\Hostname;
  use Hyn\Tenancy\Models\Website;
