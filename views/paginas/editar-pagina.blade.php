@@ -59,14 +59,7 @@
                                         </div> 
                                         @endif
                                         @if($number == 1)
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-select">Visualización categorias</label>
-                                            <div class="col-md-9">
-                                                {{ Form::select('categoria', [$paginas->categoria => $paginas->categoria,
-                                                  '1' => 'Visible',
-                                                  '0' => 'No Visible'], null, array('class' => 'form-control')) }}
-                                            </div>
-                                        </div>
+                                     
 
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Visualización en footer</label>

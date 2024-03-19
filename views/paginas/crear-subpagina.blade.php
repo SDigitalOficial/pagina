@@ -92,7 +92,7 @@
                                         </div>
 
                                         {{Form::hidden('posti', '2', array('class' => 'form-control','placeholder'=>'Ingrese la descripción de la página'))}}
-                                        {{Form::hidden('categoria', '0', array('class' => 'form-control','placeholder'=>'Ingrese la descripción de la página'))}}   
+                                       
 
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
