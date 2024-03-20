@@ -22,14 +22,15 @@
 	
 
 	<body>
-<style type="text/css">
+
+
+
+  <div id="gjs">
+    <style type="text/css">
   @foreach($pages as $pagesa)
     {!!$pagesa->page_css!!}
     @endforeach
 </style>
-
-
-  <div id="gjs">
     @foreach($pages as $pages)
     {!!$pages->page_data!!}
     @endforeach
