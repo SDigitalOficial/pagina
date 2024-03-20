@@ -51,7 +51,7 @@ class GrapejsController extends Controller
      }else{
      $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
      foreach($select as $select){
-     $contenidos = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::where('template_id','=',$select->template)->get(); 
+     $contenidos = Gratemplates::where('template_id','=',$select->template)->get(); 
      $pages = \DigitalsiteSaaS\Pagina\Tenant\Page::where('id','=',$page)->get();
      $plantillas = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=',$select->template)->get();
      $assets = \DigitalsiteSaaS\Pagina\Tenant\GrapeImage::all();
