@@ -105,8 +105,19 @@ private function subtotal(){
 }
 
   
-
 public function index(){
+
+  if(!$this->tenantName){
+dd('hola');
+  }else{
+dd('holasa');
+  }
+
+
+}
+
+
+public function indexa(){
 
 
 

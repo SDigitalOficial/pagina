@@ -9,6 +9,11 @@
 
 		<link rel="stylesheet" href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
 		<script src="//unpkg.com/grapesjs"></script>
+    <script src="//unpkg.com/grapesjs-user-blocks"></script>
+
+<link href="https://unpkg.com/grapesjs-user-blocks/dist/grapesjs-user-blocks.min.css" rel="stylesheet">
+
+
  <style type="text/css">
    body{
     margin: 0px;
@@ -66,6 +71,7 @@ const editor = grapesjs.init({
   // Disable the storage manager for the moment
   //storageManager: false,
   // Avoid any default panel
+  plugins: ['grapesjs-user-blocks'],
 
 
  
@@ -157,7 +163,9 @@ success: function(result){
 </script>	
 
 
+<script type="text/javascript">
 
+</script>
 
 <script type="text/javascript">
   

@@ -282,7 +282,7 @@ echo json_encode($response);
      if(!$this->tenantName){
      $contenido = Gratemplates::find($id);
      }else{
-     $contenido = \DigitalsiteSaaS\Pagina\Tenant\Gratemplates::find($id);
+     $contenido = Gratemplates::find($id);
      }
      $contenido->label = Input::get('nombre');
      $contenido->media = Input::get('imagen');
