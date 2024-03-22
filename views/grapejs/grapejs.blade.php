@@ -1,189 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-		<title>Page Title</title>
+    <title>Gestor SiteCMS</title>
 
-		<link rel="stylesheet" href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
-		<script src="//unpkg.com/grapesjs"></script>
+    <link rel="stylesheet" href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
+    <script src="//unpkg.com/grapesjs"></script>
     <script src="//unpkg.com/grapesjs-user-blocks"></script>
+    <link href="https://unpkg.com/grapesjs-user-blocks/dist/grapesjs-user-blocks.min.css" rel="stylesheet">
 
-<link href="https://unpkg.com/grapesjs-user-blocks/dist/grapesjs-user-blocks.min.css" rel="stylesheet">
-
-
- <style type="text/css">
-   body{
-    margin: 0px;
-   }
-   .gjs-editor-cont{
-    position: fixed;
-   }
- </style>
-    
-	</head>
-	
-
-	<body>
-
-
-
-  <div id="gjs">
     <style type="text/css">
-  @foreach($pages as $pagesa)
-    {!!$pagesa->page_css!!}
-    @endforeach
-</style>
-    @foreach($pages as $pages)
-    {!!$pages->page_data!!}
-    @endforeach
+     body{
+      margin: 0px;
+     }
+     .gjs-editor-cont{
+      position: fixed;
+     }
+    </style>
+    
+    </head>
+     <body>
+      
+      <div id="gjs">
+       <style type="text/css">
+       @foreach($pages as $pagesa)
+        {!!$pagesa->page_css!!}
+       @endforeach
+       </style>
+    
+       @foreach($pages as $pages)
+        {!!$pages->page_data!!}
+       @endforeach
+      </div>
 
+     </body>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+    <script>
+    const editor = grapesjs.init({
+    clearOnRender: true,
+    container: '#gjs',
+    fromElement: true,
+    height: '100%',
+    plugins: ['grapesjs-user-blocks'],
+    allowScripts: 1,
+    embedAsBase64: false,
 
-  </div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-        blocks : {!!$contenidos!!}
-      });
-</script>
-
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		
-		<script>
-     
-const editor = grapesjs.init({
-   
-  // Indicate where to init the editor. You can also pass an HTMLElement
-  container: '#gjs',
-  // Get the content for the canvas directly from the element
-  // As an alternative we could use: `components: '<h1>Hello World Component!</h1>'`,
-  fromElement: true,
-  // Size of the editor
-  height: '100%',
-  //width: 'auto',
-  // Disable the storage manager for the moment
-  //storageManager: false,
-  // Avoid any default panel
-  plugins: ['grapesjs-user-blocks'],
-
-
- 
-
-
-  canvas: {
-   styles: [
-    @foreach($plantillas as $plantillass)
-    {!!$plantillass->css!!}
-    @endforeach
-
+    canvas: {
+     styles: [
+      @foreach($plantillas as $plantillass)
+       {!!$plantillass->css!!}
+      @endforeach
     ],
-   scripts: [
+    scripts: [
      @foreach($plantillas as $plantillas)
-    {!!$plantillas->javascript!!}
-    @endforeach
-   ],
-  },
-
-  panels: {},
-
-   assetManager: {
-   
-    storageType     : '',
-   storeOnChange  : true,
-   storeAfterUpload  : true,
-   upload: 'saas',
-   assets       : [
-
-     @foreach($assets as $assetss)
-    '{!!$assetss->image!!}',
-    @endforeach  
-     // Pass an object with your properties
+      {!!$plantillas->javascript!!}
+     @endforeach
     ],
-    uploadFile: function(e) {
-   var files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
-var formData = new FormData();
-   for(var i in files){
-           formData.append('file-'+i, files[i]) //containing all the selected images from local
-   }
+    },
 
-$.ajax({
-  headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-url: '/grape/upload',
-type: 'POST',
-       data: formData,
-       contentType:false,
-crossDomain: true,
-dataType: 'json',
-mimeType: "multipart/form-data",
-processData:false,
-
-success: function(result){
-               var myJSON = [];
-               $.each( result['data'], function( key, value ) {
-                       myJSON[key] = value;    
-               });
-               var images = myJSON;    
-         editor.AssetManager.add(images); 
-           }
-});
-},
+    assetManager: {
    
-  },
+     storageType     : '',
+     storeOnChange  : true,
+     storeAfterUpload  : true,
+     upload: 'saas',
+
+     assets       : [
+     @foreach($assets as $assetss)
+     '{!!$assetss->image!!}',
+     @endforeach  
+     // Pass an object with your properties
+     ],
+
+     uploadFile: function(e) {
+     var files = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+     var formData = new FormData();
+     for(var i in files){
+     formData.append('file-'+i, files[i]) //containing all the selected images from local
+     }
+
+     $.ajax({
+      headers: {
+       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      
+      url: '/grape/upload',
+      type: 'POST',
+      data: formData,
+      contentType:false,
+      crossDomain: true,
+      dataType: 'json',
+      mimeType: "multipart/form-data",
+      processData:false,
+
+      success: function(result){
+       var myJSON = [];
+       $.each( result['data'], function( key, value ) {
+       myJSON[key] = value;    
+       });
+       var images = myJSON;    
+       editor.AssetManager.add(images); 
+       }
+       });
+       },
+       },
 
 
-  blockManager: {
-   
-   blocks : {!!$contenidos!!} 
-    
-  },
+       blockManager: {
+        blocks : {!!$contenidos!!} 
+       },
+     });
+    </script> 
 
+    <script type="text/javascript">
+     editor.addComponents('<script src="/templates/base/js/bootstrap.min.js"><\/script><script src="/templates/base/js/jquery-3.5.1.slim.min.js"><\/script><script src="/templates/base/js/popper.min.js"><\/script>')
+    </script>
 
-    // Default configurations
-  storageManager: {
-   
-   type: 'remote', // Type of the storage, available: 'local' | 'remote'
-      autosave: false, // Store data automatically
-      autoload: false, // Autoload stored data on init
-    
-  },
-
- 
-
-
-});
-</script>	
-
-
-<script type="text/javascript">
-
-</script>
-
-<script type="text/javascript">
-  
-  editor.Panels.addButton('options',
- [{
-   id: 'save-db',
-   className: 'fas fa-save',
-   command: 'save-db',
-   attributes: {
+    <script type="text/javascript">
+     editor.Panels.addButton('options',[{
+     id: 'save-db',
+     className: 'fas fa-save',
+     command: 'save-db',
+     attributes: {
      title: 'Save Changes'
-   },
- }]
-);
-</script>
+     },
+     }]);
+    </script>
 
-<script type="text/javascript">
-  editor.runCommand('open-blocks')
-</script>
+    <script type="text/javascript">
+     editor.runCommand('open-blocks')
+    </script>
 
 
 <script type="text/javascript">
@@ -218,31 +169,7 @@ const searchParams = new URLSearchParams(window.location.search);
 });
 </script>
 
-<script type="text/javascript">
-  const searchParamss = new URLSearchParams(window.location.search);
-$(document).ready(function(){ 
-   $.ajax({
-            url: '/productos/alltrait',
-            method: 'POST',       
-            data: {
-             pagesold: searchParamss.get('page'),
-             html:1,
-             _token: $('meta[name="csrf-token"]').attr('content'),
-            }
-           }).done(function(res){
 
-            var arreglo = JSON.parse(res);
-            //console.log(arreglo);
-
-            for(var x=0;x<arreglo.lenght;x++){
-
-              var todo ='<div id="gjs">'+arreglo[x].page_data+'</div>';
-
-            }
-
-        });
-         });
-</script>
 
   
 
@@ -343,6 +270,6 @@ var pfx = editor.getConfig().stylePrefix
 
 
 
-		
-		</body>
+    
+    </body>
 </html>

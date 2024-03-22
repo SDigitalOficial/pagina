@@ -106,14 +106,13 @@ private function subtotal(){
 
   
 public function index(){
+if(!$this->tenantName){
 
-  if(!$this->tenantName){
-dd('hola');
-  }else{
-dd('holasa');
-  }
+}else{
 
+}
 
+return view('website');
 }
 
 
