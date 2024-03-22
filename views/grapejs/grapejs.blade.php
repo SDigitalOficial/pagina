@@ -114,7 +114,14 @@
        blockManager: {
         blocks : {!!$contenidos!!} 
        },
+
+       storageManager: {
+        type: 'remote', // Type of the storage, available: 'local' | 'remote'
+        autosave: false, // Store data automatically
+        autoload: false, // Autoload stored data on init
+       },
      });
+
     </script> 
 
     <script type="text/javascript">
