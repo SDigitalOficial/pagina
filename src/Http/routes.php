@@ -471,6 +471,7 @@ Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
  Route::get('en', 'DigitalsiteSaaS\Pagina\Http\WebController@index');
  Route::get('es', 'DigitalsiteSaaS\Pagina\Http\WebController@index');
  Route::get('/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@paginas');
+ 
 
  Route::get('en/{page}', 'DigitalsiteSaaS\Pagina\Http\WebController@paginasin');
   Route::get('es/{page}', 'DigitalsiteSaaS\Pagina\Http\WebController@paginasin');

@@ -45,7 +45,7 @@
  use App\Http\Requests\FicusuarioCreateRequest;
  use Input;
  use Illuminate\Support\Str;
- use Illuminate\Http\Request;
+ use Request;
  use App\Mail\Mensaje;
  use App\Mail\Mensajeficha;
  use App\Mail\Registro;
@@ -107,12 +107,18 @@ private function subtotal(){
   
 public function index(){
 if(!$this->tenantName){
-
+$menu = Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
+$pagina = Page::where('slug','=', $id)->get();
 }else{
-
+$menu = \DigitalsiteSaaS\Pagina\Tenant\Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
+if(Request::segment(1) == ''){
+$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', '/')->get();
+}else{
+$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', Request::segment(1))->get();
 }
 
-return view('website');
+}
+return view('website')->with('menu', $menu)->with('pagina', $pagina);
 }
 
 
@@ -448,7 +454,7 @@ if($scroll == 1){
 
     }
 
-    public function paginas($page){
+    public function paginasss($page){
 
     $departamentos = Departamentocon::all();
      $municipios = Municipio::all();
