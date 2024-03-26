@@ -124,21 +124,28 @@ foreach($select as $select){
 $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
 }
-
 return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo);
 }
 
 
 public function paginas($page){
 if(!$this->tenantName){
+if(!$this->tenantName){
 $menu = Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
 $pagina = Page::where('slug','=', $page)->get();
+$select = Grapeselect::where('id','=', '1')->get();
+$seo =  Seo::where('id','=',1)->get();
+foreach($select as $select){
+$plantillas = GrapeTemp::where('id','=',$select->template)->get();
+ }
 }else{
 $menu = \DigitalsiteSaaS\Pagina\Tenant\Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
-if(Request::segment(1) == ''){
-$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', $page)->get();
-}else{
-$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', $page)->get();
+$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=',$page)->get();
+$select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
+$seo =  \DigitalsiteSaaS\Pagina\Tenant\Seo::where('id','=',1)->get();
+foreach($select as $select){
+$plantillas = GrapeTemp::where('id','=',$select->template)->get();
+}
 }
 
 }
