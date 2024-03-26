@@ -65,6 +65,7 @@
  use DigitalsiteSaaS\Elearning\Cursos;
  use App\Http\ConnectionsHelper;
  use URL;
+ use DigitalsiteSaaS\Pagina\GrapeTemp;
 
 
 class WebController extends Controller {
@@ -108,17 +109,21 @@ private function subtotal(){
 public function index(){
 if(!$this->tenantName){
 $menu = Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
-$pagina = Page::where('slug','=', $id)->get();
+$pagina = Page::where('slug','=', '/')->get();
+$select = Grapeselect::where('id','=', '1')->get();
+foreach($select as $select){
+$plantillas = GrapeTemp::where('id','=',$select->template)->get();
+ }
 }else{
 $menu = \DigitalsiteSaaS\Pagina\Tenant\Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
-if(Request::segment(1) == ''){
-$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', '/')->get();
-}else{
-$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', Request::segment(1))->get();
+$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=','/')->get();
+$select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
+foreach($select as $select){
+$plantillas = GrapeTemp::where('id','=',$select->template)->get();
+}
 }
 
-}
-return view('website')->with('menu', $menu)->with('pagina', $pagina);
+return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina);
 }
 
 

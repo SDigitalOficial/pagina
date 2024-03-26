@@ -99,20 +99,23 @@
       type: 'POST',
       data: formData,
       contentType:false,
-      crossDomain: true,
+      crossDomain: false,
       dataType: 'json',
       mimeType: "multipart/form-data",
       processData:false,
 
       success: function(result){
+        $("divid").load(" #divid");
        var myJSON = [];
        var data = 'dsfsfdsfds';
        $.each( result['data'], function( key, value ) {
+
        myJSON[key] = value;  
-    
+      location.reload();
        });
+
        var images = myJSON;    
-       editor.AssetManager.add(images); 
+       editor.AssetManager.add(images);
        }
        });
        },
@@ -126,11 +129,18 @@
        storageManager: {
         type: 'remote', // Type of the storage, available: 'local' | 'remote'
         autosave: false, // Store data automatically
-        autoload: false, // Autoload stored data on init
+        autoload: true, // Autoload stored data on init
        },
      });
 
     </script> 
+
+    <script type="text/javascript">
+      function updateDiv()
+{ 
+    $( ".gjs-am-assets" ).load(window.location.href + ".gjs-am-assets" );
+}
+    </script>
  <!--
     <script type="text/javascript">
      editor.addComponents('<script src="/templates/base/js/bootstrap.min.js"><\/script><script src="/templates/base/js/jquery-3.5.1.slim.min.js"><\/script><script src="/templates/base/js/popper.min.js"><\/script>')
