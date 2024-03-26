@@ -111,6 +111,7 @@ if(!$this->tenantName){
 $menu = Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
 $pagina = Page::where('slug','=', '/')->get();
 $select = Grapeselect::where('id','=', '1')->get();
+$seo =  Seo::where('id','=',1)->get();
 foreach($select as $select){
 $plantillas = GrapeTemp::where('id','=',$select->template)->get();
  }
@@ -118,6 +119,7 @@ $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 $menu = \DigitalsiteSaaS\Pagina\Tenant\Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
 $pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=','/')->get();
 $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
+$seo =  \DigitalsiteSaaS\Pagina\Tenant\Seo::where('id','=',1)->get();
 foreach($select as $select){
 $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
