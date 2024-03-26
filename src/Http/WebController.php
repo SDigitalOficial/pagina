@@ -125,7 +125,7 @@ $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
 }
 
-return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina);
+return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo);
 }
 
 
@@ -142,7 +142,7 @@ $pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', $page)->get();
 }
 
 }
-return view('website')->with('menu', $menu)->with('pagina', $pagina);
+return view('website')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo);
 }
 
 
