@@ -47,8 +47,9 @@
     fromElement: true,
     height: '100%',
     plugins: ['grapesjs-user-blocks'],
-    allowScripts: 1,
-    embedAsBase64: false,
+    allowScripts: 1,  
+    showOffsets: true,
+    embedAsBase64: false,  
 
     canvas: {
      styles: [
@@ -63,12 +64,17 @@
     ],
     },
 
+
+
     assetManager: {
-   
      storageType     : '',
      storeOnChange  : true,
      storeAfterUpload  : true,
-     upload: 'saas',
+     upload: true,
+      embedAsBase64: false,
+          custom: false,
+
+
 
      assets       : [
      @foreach($assets as $assetss)
@@ -100,8 +106,10 @@
 
       success: function(result){
        var myJSON = [];
+       var data = 'dsfsfdsfds';
        $.each( result['data'], function( key, value ) {
-       myJSON[key] = value;    
+       myJSON[key] = value;  
+    
        });
        var images = myJSON;    
        editor.AssetManager.add(images); 
@@ -123,11 +131,11 @@
      });
 
     </script> 
-
+ <!--
     <script type="text/javascript">
      editor.addComponents('<script src="/templates/base/js/bootstrap.min.js"><\/script><script src="/templates/base/js/jquery-3.5.1.slim.min.js"><\/script><script src="/templates/base/js/popper.min.js"><\/script>')
     </script>
-
+-->
     <script type="text/javascript">
      editor.Panels.addButton('options',[{
      id: 'save-db',
@@ -178,7 +186,10 @@ const searchParams = new URLSearchParams(window.location.search);
 
 
 
-  
+  <script type="text/javascript">
+
+          
+  </script>
 
 
 

@@ -122,6 +122,23 @@ return view('website')->with('menu', $menu)->with('pagina', $pagina);
 }
 
 
+public function paginas($page){
+if(!$this->tenantName){
+$menu = Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
+$pagina = Page::where('slug','=', $page)->get();
+}else{
+$menu = \DigitalsiteSaaS\Pagina\Tenant\Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
+if(Request::segment(1) == ''){
+$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', $page)->get();
+}else{
+$pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=', $page)->get();
+}
+
+}
+return view('website')->with('menu', $menu)->with('pagina', $pagina);
+}
+
+
 public function indexa(){
 
 
