@@ -130,7 +130,6 @@ return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->wi
 
 public function paginas($page){
 if(!$this->tenantName){
-if(!$this->tenantName){
 $menu = Page::whereNull('page_id')->orderBy('posta', 'asc')->get();
 $pagina = Page::where('slug','=', $page)->get();
 $select = Grapeselect::where('id','=', '1')->get();
