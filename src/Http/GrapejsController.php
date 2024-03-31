@@ -50,7 +50,6 @@ class GrapejsController extends Controller
      }
      }else{
      $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
-     dd($select);
      foreach($select as $select){
      $contenidos = Gratemplates::where('template_id','=',$select->template)->get(); 
      $pages = \DigitalsiteSaaS\Pagina\Tenant\Page::where('id','=',$page)->get();
