@@ -111,7 +111,7 @@
        $.each( result['data'], function( key, value ) {
 
        myJSON[key] = value;  
-      location.reload();
+      //location.reload();
        });
 
        var images = myJSON;    

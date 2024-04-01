@@ -8,14 +8,17 @@ use DigitalsiteSaaS\Pagina\GrapeTemp;
 use DigitalsiteSaaS\Pagina\GrapeImage;
 use DigitalsiteSaaS\Pagina\Grapeselect;
 use Input;
- use Hyn\Tenancy\Models\Hostname;
- use Hyn\Tenancy\Models\Website;
- use Hyn\Tenancy\Repositories\HostnameRepository;
- use Hyn\Tenancy\Repositories\WebsiteRepository;
+use Hyn\Tenancy\Models\Hostname;
+use Hyn\Tenancy\Models\Website;
+use Hyn\Tenancy\Repositories\HostnameRepository;
+use Hyn\Tenancy\Repositories\WebsiteRepository;
 use DB;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic;
 use File;
+use Image;
 use Storage;
+use Webp;
 
 class GrapejsController extends Controller
 {
@@ -182,6 +185,7 @@ class GrapejsController extends Controller
       
     }
 
+  
     public function grapeupload(Request $request){
 
 $dominio =  $_SERVER['HTTP_HOST'];
@@ -197,8 +201,10 @@ $salida = $websites->uuid;
 
     if($_FILES)
 {
+    
 $resultArray = array();
     foreach ( $_FILES as $file){
+
                 $fileName = $file['name'];
                 $tmpName = $file['tmp_name'];
                 $fileSize = $file['size'];
@@ -211,19 +217,31 @@ $resultArray = array();
                 $fp = fopen($tmpName, 'r');
                 $content = fread($fp, filesize($tmpName));
                 fclose($fp);
+                $webps = $file['name'];
+                 $new_webps = preg_replace('"\.(jpg|jpeg|png|webp)$"', '.webp', $webps);
                 $result=array(
-                        'name'=>$file['name'],
+                        'name'=>$new_webps,
                         'type'=>'image',
-                        'src'=>"data:".$fileType.";base64,".base64_encode($content),
+                        'src'=>"/saas"."/".$salida."/".$new_webps,
                         'height'=>350,
                         'width'=>250
                 ); 
 
-    $uploadDir = public_path('saas/'.$salida);
-      $uploadDirsave = '/saas/'.$salida.'/'.$file['name'];
-$targetPath = $uploadDir.'/'. $fileName;
-$lata = move_uploaded_file($tmpName, $targetPath);
 
+        $img = $file['name'];
+        $extension = \File::extension($img);
+        if(in_array($extension,["jpeg","jpg","png"])){
+    //old image
+            $webp = $file['name'];
+            $new_webp = preg_replace('"\.(jpg|jpeg|png|webp)$"', '.webp', $webp);
+
+    
+    $uploadDir = public_path('saas/'.$salida);
+
+      $uploadDirsave = '/saas/'.$salida.'/'.$new_webp;
+$targetPath = $uploadDir.'/'. $new_webp;
+$lata = move_uploaded_file($tmpName, $targetPath);
+    }
 
 if(!$this->tenantName){
  GrapeImage::insert([
