@@ -296,7 +296,37 @@ var pfx = editor.getConfig().stylePrefix
     )
 </script>
 
-
+<script type="text/javascript">
+  editor.Components.addType('input', {
+    isComponent: el => el.tagName === 'INPUT',
+    model: {
+      defaults: {
+        traits: [
+          // Strings are automatically converted to text types
+          'name', // Same as: { type: 'text', name: 'name' }
+          'placeholder',
+          {
+            type: 'select', // Type of the trait
+            name: 'type', // (required) The name of the attribute/property to use on component
+            label: 'Type', // The label you will see in Settings
+            options: [
+              { id: 'text', label: 'Text'},
+              { id: 'email', label: 'Email'},
+              { id: 'password', label: 'Password'},
+              { id: 'number', label: 'Number'},
+              { id: 'hidden', label: 'Hidden'},
+            ]
+          }, {
+            type: 'checkbox',
+            name: 'required',
+        }],
+        // As by default, traits are bound to attributes, so to define
+        // their initial value we can use attributes
+        attributes: { type: 'text', required: true },
+      },
+    },
+});
+</script>
 
     
     </body>
