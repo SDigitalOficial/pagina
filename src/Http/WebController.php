@@ -2119,6 +2119,7 @@ return redirect($url);
       return Redirect::to($redireccion)->with('status', 'ok_create');
      }
      else{
+      /*
       $datas =\DigitalsiteSaaS\Pagina\Tenant\Content::where('id',$envio)->get();
        foreach ($datas as $user){
         $for = ['darioma07@hotmail.com','darioma07@gmail.com','dario.martinez@sitedigital.com.co'];
@@ -2126,6 +2127,7 @@ return redirect($url);
        Mail::to(Input::get('email'))
        ->bcc([$id_str][0])
      ->send(new Mensajema($userma));
+     */
      }
      return Redirect::to($redireccion)->with('status', 'ok_create');
    }
