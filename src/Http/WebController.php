@@ -2127,8 +2127,8 @@ return redirect($url);
        Mail::to(Input::get('email'))
        ->bcc([$id_str][0])
      ->send(new Mensajema($userma));
-     */
-     }
+
+     }*/
      return Redirect::to($redireccion)->with('status', 'ok_create');
    }
     
