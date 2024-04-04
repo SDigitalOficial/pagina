@@ -467,6 +467,7 @@ Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
  Route::get('ingresar', 'DigitalsiteSaaS\Pagina\Http\WebController@ingresar');
  Route::resource('ingreso-comunidad', 'DigitalsiteSaaS\Pagina\Http\WebController@ingresarcomunidad');
  Route::post('mensajes/crearmensajeinput', 'DigitalsiteSaaS\Pagina\Http\WebController@crearmensajeinput');
+ Route::post('registro/mensajes', 'DigitalsiteSaaS\Pagina\Http\WebController@crearregistro');
  Route::get('/', 'DigitalsiteSaaS\Pagina\Http\WebController@index');
  Route::get('en', 'DigitalsiteSaaS\Pagina\Http\WebController@index');
  Route::get('es', 'DigitalsiteSaaS\Pagina\Http\WebController@index');

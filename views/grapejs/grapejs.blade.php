@@ -196,15 +196,6 @@ const searchParams = new URLSearchParams(window.location.search);
 
 
 
-  <script type="text/javascript">
-
-          
-  </script>
-
-
-
-
-
 
 <script type="text/javascript">
 var pfx = editor.getConfig().stylePrefix
@@ -314,7 +305,6 @@ var pfx = editor.getConfig().stylePrefix
               { id: 'email', label: 'Email'},
               { id: 'password', label: 'Password'},
               { id: 'number', label: 'Number'},
-              { id: 'hidden', label: 'Hidden'},
             ]
           }, {
             type: 'checkbox',

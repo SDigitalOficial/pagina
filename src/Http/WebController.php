@@ -1887,6 +1887,253 @@ return redirect($url);
     
     }
 
+
+  public function crearregistro(){
+  if(!$this->tenantName){
+  $userma = Messagema::create([
+   'campo1' => Input::get('campo1'),
+   'campo2' => Input::get('campo2'),
+   'campo3' => Input::get('campo3'),
+   'campo4' => Input::get('campo4'),
+   'campo5' => Input::get('campo5'),
+   'campo6' => Input::get('campo6'),
+   'campo7' => Input::get('campo7'),
+   'campo8' => Input::get('campo8'),
+   'campo9' => Input::get('campo9'),
+   'campo10' => Input::get('campo10'),
+   'campo11' => Input::get('campo11'),
+   'campo12' => Input::get('campo12'),
+   'campo13' => Input::get('campo13'),
+   'campo14' => Input::get('campo14'),
+   'campo15' => Input::get('campo15'),
+   'campo16' => Input::get('campo16'),
+   'campo17' => Input::get('campo17'),
+   'campo18' => Input::get('campo18'),
+   'campo19' => Input::get('campo19'),
+   'campo20' => Input::get('campo20'),
+   'form_id' => Input::get('form_id'),
+   'email' => Input::get('email'),
+   'radio' => Input::get('radio'),
+   'estado' => '0',
+   'remember_token' => Hash::make('_token'),
+  ]);
+
+     
+    $usermacrm = Gestion::create([
+   'nombre' => Input::get('campo1'),
+   'apellido' => Input::get('campo2'),
+   'email' => Input::get('campo3'),
+   'numero' => Input::get('campo4'),
+   'direccion' => Input::get('campo5'),
+   'empresa' => Input::get('campo6'),
+   'nit' => '1',
+   'interes' => '1',
+   'sector_id' => '1',
+   'cantidad_id' => '1',
+   'referido_id' => '1',
+   'pais_id' => '1',
+   'ciudad_id' => '1',
+   'comentarios' => '1',
+   'tipo' => '1',
+   'utm_source' => Input::get('utm_source'),
+   'utm_campaign' => Input::get('utm_campaign'),
+   'utm_medium' => Input::get('utm_medium'),
+   'remember_token' => Hash::make('_token'),
+]);
+
+
+
+     $envio =  Input::get('form_id');
+     $redireccion = Input::get('redireccion');
+     $ema = Input::get('email');
+      if($ema == ''){
+      return Redirect::to($redireccion)->with('status', 'ok_create');
+     }
+     else{
+      $datas = Content::where('id',$envio)->get();
+       foreach ($datas as $user){
+       Mail::to(Input::get('email'))
+       ->bcc($user->video)
+     ->send(new Mensajema($userma));
+     }
+     return Redirect::to($redireccion)->with('status', 'ok_create');
+   }
+    }
+
+    $userma = \DigitalsiteSaaS\Pagina\Tenant\Messagema::create([
+   'campo1' => Input::get('campo1'),
+   'campo2' => Input::get('campo2'),
+   'campo3' => Input::get('campo3'),
+   'campo4' => Input::get('campo4'),
+   'campo5' => Input::get('campo5'),
+   'campo6' => Input::get('campo6'),
+   'campo7' => Input::get('campo7'),
+   'campo8' => Input::get('campo8'),
+   'campo9' => Input::get('campo9'),
+   'campo10' => Input::get('campo10'),
+   'campo11' => Input::get('campo11'),
+   'campo12' => Input::get('campo12'),
+   'campo13' => Input::get('campo13'),
+   'campo14' => Input::get('campo14'),
+   'campo15' => Input::get('campo15'),
+   'campo16' => Input::get('campo16'),
+   'campo17' => Input::get('campo17'),
+   'campo18' => Input::get('campo18'),
+   'campo19' => Input::get('campo19'),
+   'campo20' => Input::get('campo20'),
+   'form_id' => Input::get('form_id'),
+   'email' => Input::get('email'),
+   'radio' => Input::get('radio'),
+   'nombre' => Input::get('nombre'),
+   'apellido' => Input::get('apellido'),
+   'direccion' => Input::get('direccion'),
+   'telefono' => Input::get('telefono'),
+   'pais' => Input::get('pais'),
+   'ciudad' => Input::get('ciudad'),
+   'empresa' => Input::get('empresa'),
+   'mensaje' => Input::get('mensaje'),
+   'nombre' => Input::get('nombre'),
+   'cargo' => Input::get('cargo'),
+   'terminos' => Input::get('terminos'),
+   'estado' => '0',
+   'remember_token' => Hash::make('_token'),
+]);
+
+    if(Input::get('campo1') == '')
+    $campo1 = '0';
+    else
+    $campo1 = Input::get('campo1');
+    if(Input::get('campo2') == '')
+    $campo2 = '0';
+    else
+    $campo2 = Input::get('campo2');
+
+      if(Input::get('campo3') == '')
+    $campo3 = '0';
+    else
+    $campo3 = Input::get('campo3');
+
+  if(Input::get('email') == '')
+    $email = 'Sin email';
+    else
+    $email = Input::get('email');
+    if(Input::get('campo4') == '')
+    $campo4 = '0';
+    else
+    $campo4 = Input::get('campo4');
+  if(Input::get('campo5') == '')
+    $campo5 = 'Sin Informacion';
+    else
+    $campo5 = Input::get('campo5');
+    if(Input::get('campo6') == '')
+    $campo6 = '0';
+    else
+    $campo6 = Input::get('campo6');
+  if(Input::get('producto') == '')
+    $interes = '1';
+    else
+    $interes = Input::get('producto');
+  if(Input::get('utm_crm') == '')
+    $utm_crm = '1';
+    else
+    $utm_crm = Input::get('utm_crm');
+  if(Input::get('utm_medium') == '')
+    $utm_medium = '1';
+    else
+    $utm_medium = Input::get('utm_medium');
+  if(Input::get('utm_campaign') == '')
+    $utm_campaign = '1';
+    else
+    $utm_campaign = Input::get('utm_campaign');
+  if(Input::get('utm_source') == '')
+    $utm_source = '1';
+    else
+    $utm_source = Input::get('utm_source');
+  if(Input::get('nombre') == '')
+    $nombre = 'Sin nombre';
+    else
+    $nombre = Input::get('nombre');
+  if(Input::get('apellido') == '')
+    $apellido = 'Sin apellido';
+    else
+    $apellido = Input::get('apellido');
+  if(Input::get('direccion') == '')
+    $direccion = 'Sin dirección';
+    else
+    $direccion = Input::get('direccion');
+  if(Input::get('telefono') == '')
+    $telefono = 'Sin telefono';
+    else
+    $telefono = Input::get('telefono');
+  if(Input::get('pais') == '')
+    $pais = '1';
+    else
+    $pais = Input::get('pais');
+  if(Input::get('ciduad') == '')
+    $ciudad = '1';
+    else
+    $ciudad = Input::get('ciudad');
+  if(Input::get('mensaje') == '')
+    $mensaje = 'Sin mensaje';
+    else
+    $mensaje = Input::get('mensaje');
+  if(Input::get('empresa') == '')
+    $empresa = 'Sin Empresa';
+    else
+    $empresa = Input::get('empresa');
+  if(Input::get('cargo') == '')
+    $cargo = 'Sin cargo';
+    else
+    $cargo = Input::get('cargo');
+  if(Input::get('termninos') == '')
+    $terminos = '0';
+    else
+    $terminos = Input::get('terminos');
+
+   $usermacrm = \DigitalsiteSaaS\Gestion\Tenant\Gestion::create([
+   'nombre' => $nombre,
+   'apellido' => $apellido,
+   'email' => $direccion,
+   'numero' => $telefono,
+   'direccion' => $direccion,
+   'empresa' => $empresa,
+   'nit' => '0',
+   'interes' => $interes,
+   'sector_id' => '1',
+   'cantidad_id' => '1',
+   'referido_id' => $utm_crm,
+   'utm_source' => $utm_source,
+   'utm_campaign' => $utm_campaign,
+   'utm_medium' => $utm_medium,
+   'pais_id' => '1',
+   'ciudad_id' => '1',
+   'comentarios' => '1',
+   'tipo' => '1',
+   'remember_token' => Hash::make('_token'),
+]);
+
+  $envio =  Input::get('form_id');
+     $redireccion = Input::get('redireccion');
+     $ema = Input::get('email');
+      if($ema == ''){
+      return Redirect::to($redireccion)->with('status', 'ok_create');
+     }
+     else{
+      $datas =\DigitalsiteSaaS\Pagina\Tenant\Content::where('id',$envio)->get();
+       foreach ($datas as $user){
+        $for = ['darioma07@hotmail.com','darioma07@gmail.com','dario.martinez@sitedigital.com.co'];
+        $id_str = explode(',', trim($user->video));
+       Mail::to(Input::get('email'))
+       ->bcc([$id_str][0])
+     ->send(new Mensajema($userma));
+     }
+     return Redirect::to($redireccion)->with('status', 'ok_create');
+   }
+    
+    }
+
+
+
   public function estadistica(){
     if(!$this->tenantName){
    $user = Ips::where('ip', Input::get('ip'))->first();
