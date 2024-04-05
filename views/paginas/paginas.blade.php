@@ -135,8 +135,10 @@
                 <td>{{$subcategory->titulo}}</td>
                 <td>{{$subcategory->created_at}}</td>
                 <td>{{$subcategory->updated_at}}</td>
-                <td><a href="editor/sitecms?page={{$subcategory->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-eye_open"></i></span></a>
+                <td><a href="/editor/sitecms?page={{$subcategory->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-imac"></i></span></a>
+                  <!--
                  <a href="contenidos/digitales/{{$subcategory->id}}"><span id="tip" data-toggle="tooltip" data-placement="top" title="Ver contenidos" class="btn btn-warning"><i class="gi gi-eye_open"></i></span></a>
+                 -->
                  <a href="paginas/editar/{{ $subcategory->id }}"><span id="tup" data-toggle="tooltip" data-placement="bottom" title="Editar página" class="btn btn-info"><i class="fa fa-pencil-square-o sidebar-nav-icon"></i></span></a>
                  @if($casta =='1')
                  <a href="#"><span id="tup" data-toggle="tooltip" data-placement="bottom" title="$pagina->id" class="btn btn-danger nodelete"><i class="hi hi-trash sidebar-nav-icon"></i></span></a>

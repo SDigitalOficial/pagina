@@ -147,7 +147,7 @@ $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
 }
 
-return view('website')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo);
+return view('website')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas);
 }
 
 
