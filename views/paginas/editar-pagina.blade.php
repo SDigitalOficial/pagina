@@ -59,17 +59,13 @@
                                         </div> 
                                         @endif
                                         @if($number == 1)
-                                     
 
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-select">Visualización en footer</label>
+                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Posición</label>
                                             <div class="col-md-9">
-                                                {{ Form::select('visualizafoot', [$paginas->visualizafoot => $paginas->visualizafoot,
-                                                  '1' => 'Visible',
-                                                  '0' => 'No Visible'], null, array('class' => 'form-control')) }}
+                                                {{Form::number('posicion', '2', array('class' => 'form-control','placeholder'=>'Ingrese palabras clave','maxlength' => '150', 'min' => '0'))}}
                                             </div>
                                         </div>
-
                                         
                                         @else
                                         @endif
@@ -80,10 +76,8 @@
                                             <label class="col-md-3 control-label" for="example-select">Visualización</label>
                                             <div class="col-md-9">
                                                {{ Form::select('sitio', [$paginas->sitio => $paginas->sitio,
-                                                '1' => 'Horizontal',
-                                                '2' => 'Vertical',
-                                                '3' => 'Vertical y Horizontal',
-                                                '4' => 'No visible'], null, array('class' => 'form-control')) }}
+                                                '1' => 'Visible',
+                                                '2' => 'No visible'], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
 

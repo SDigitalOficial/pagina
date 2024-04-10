@@ -110,6 +110,22 @@ Route::get('gestion/municipios/{id}', 'DigitalsiteSaaS\Pagina\Http\Configuracion
  });
 
 
+Route::get('/json/json', function(){ 
+
+$arrSku = [
+  '1' => 'One',
+  '2' => 'Two'
+];
+
+
+
+ $html = json_encode($arrSku);
+dd($html);
+
+ });
+
+
+
  
 });
 

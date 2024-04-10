@@ -1988,6 +1988,7 @@ return redirect($url);
    'apellido' => Input::get('apellido'),
    'direccion' => Input::get('direccion'),
    'telefono' => Input::get('telefono'),
+   'interes' => Input::get('interes'),
    'pais' => Input::get('pais'),
    'ciudad' => Input::get('ciudad'),
    'empresa' => Input::get('empresa'),
@@ -2029,14 +2030,10 @@ return redirect($url);
     $campo6 = '0';
     else
     $campo6 = Input::get('campo6');
-  if(Input::get('producto') == '')
+  if(Input::get('interes') == '')
     $interes = '1';
     else
-    $interes = Input::get('producto');
-  if(Input::get('utm_crm') == '')
-    $utm_crm = '1';
-    else
-    $utm_crm = Input::get('utm_crm');
+    $interes = Input::get('interes');
   if(Input::get('utm_medium') == '')
     $utm_medium = '1';
     else

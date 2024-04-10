@@ -122,10 +122,16 @@
                                             <label class="col-md-3 control-label" for="example-text-input">Categoria</label>
                                             <div class="col-md-9">
                                              {{ Form::select('categoria', [$componentes->category => $componentes->category,
-                                             'Imagen' => 'Imagen',
-                                             'Texto' => 'Texto',
+                                             'Básicos' => 'Básicos',
+                                             'Diagramación' => 'Diagramación',
+                                             'Formularios' => 'Formualrios',
+                                             'CTA's => 'CTA's,
+                                             'Sliders' => 'Sliders',
+                                             'Acordeones' => 'Acordeones',
                                              'Carousel' => 'Carousel',
-                                             'Diagramacion' => 'Diagramación',
+                                             'Tabs' => 'Tabas',
+                                             'Contador' => 'Contador',
+                                             'Filtros' => 'Filtors',
                                              'Otros' => 'Otros'], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>

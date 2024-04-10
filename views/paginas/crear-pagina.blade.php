@@ -97,25 +97,7 @@
                                                {{Form::radio('nivel', '2')}}Sub-Menú  
                                             </div>
                                         </div> 
-                                        @if($number == 1)
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-select">Visualización categorias</label>
-                                            <div class="col-md-9">
-                                                {{ Form::select('categoria', [
-                                                 '1' => 'Visible',
-                                                 '0' => 'No Visible'], null, array('class' => 'form-control')) }}
-                                            </div>
-                                        </div>
-                                        @else
-                                        @endif
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-select">Visualización en footer</label>
-                                            <div class="col-md-9">
-                                                {{ Form::select('visualizafoot', [
-                                                 '1' => 'Visible',
-                                                 '0' => 'No Visible'], null, array('class' => 'form-control')) }}
-                                            </div>
-                                        </div>
+                                    
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Posición</label>
                                             <div class="col-md-9">
@@ -126,10 +108,8 @@
                                             <label class="col-md-3 control-label" for="example-select">Visualización</label>
                                             <div class="col-md-9">
                                                 {{ Form::select('sitio', [
-                                                 '1' => 'Horizontal',
-                                                 '2' => 'Vertical',
-                                                 '3' => 'Vertical y Horizontal',
-                                                 '4' => 'No visible'
+                                                 '1' => 'Visible',
+                                                 '2' => 'No Visible'
                                                  ], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
@@ -209,17 +189,13 @@
                                                {{Form::radio('nivel', '2')}}Sub-Menú  
                                             </div>
                                         </div> 
-                                        @if($number == 1)
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-select">Visualización categorias</label>
+                                        
+                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Posición</label>
                                             <div class="col-md-9">
-                                                {{ Form::select('categoria', [
-                                                 '1' => 'Visible',
-                                                 '0' => 'No Visible'], null, array('class' => 'form-control')) }}
+                                                {{Form::number('posicion', '2', array('class' => 'form-control','placeholder'=>'Ingrese palabras clave','maxlength' => '150', 'min' => '0'))}}
                                             </div>
                                         </div>
-                                        @else
-                                        @endif
 
                                           <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Visualización en footer</label>

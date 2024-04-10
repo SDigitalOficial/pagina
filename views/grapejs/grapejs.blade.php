@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
     <script src="//unpkg.com/grapesjs"></script>
     <script src="//unpkg.com/grapesjs-user-blocks"></script>
+    <script src="path/to/grapesjs-style-bg.min.js"></script>
     <link href="https://unpkg.com/grapesjs-user-blocks/dist/grapesjs-user-blocks.min.css" rel="stylesheet">
 
     <style type="text/css">
@@ -50,6 +51,7 @@
     allowScripts: 1,  
     showOffsets: true,
     embedAsBase64: false,  
+
 
     canvas: {
      styles: [
@@ -134,6 +136,16 @@
      });
 
     </script> 
+    <script type="text/javascript">
+  var editor = grapesjs.init({
+      container: '#gjs',
+      // ...
+      plugins: ['grapesjs-style-bg'],
+      pluginsOpts: {
+        'grapesjs-style-bg': { /* options */ }
+      }
+  });
+</script>
 
     <script type="text/javascript">
       function updateDiv()
@@ -157,10 +169,11 @@
      }]);
     </script>
 
+   <!--
     <script type="text/javascript">
      editor.runCommand('open-blocks')
     </script>
-
+  -->
 
 <script type="text/javascript">
 const searchParams = new URLSearchParams(window.location.search);
