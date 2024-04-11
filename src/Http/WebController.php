@@ -1652,7 +1652,7 @@ return redirect($url);
 
    public function mensajeficha(){
 
-        if(!$this->tenantName){   
+      if(!$this->tenantName){   
       $userma = Message::create([
       'nombre' => Input::get('nombre'),
       'sujeto' => Input::get('sujeto'),
@@ -1865,7 +1865,7 @@ return redirect($url);
    'comentarios' => '1',
    'tipo' => '1',
    'remember_token' => Hash::make('_token'),
-]);
+  ]);
 
   $envio =  Input::get('form_id');
      $redireccion = Input::get('redireccion');
@@ -1889,6 +1889,19 @@ return redirect($url);
 
 
   public function crearregistro(){
+  
+  $uri_path = URL::previous(); 
+  $uri_parts = explode('/', $uri_path);
+  $request_url = end($uri_parts);
+  if($request_url == ''){
+    $interesweb = 'inicio';
+  }
+    else{
+      $interesweb = $request_url;
+  }
+
+  $request_url = end($uri_parts);
+
   if(!$this->tenantName){
   $userma = Messagema::create([
    'campo1' => Input::get('campo1'),
@@ -2095,10 +2108,10 @@ return redirect($url);
    'direccion' => $direccion,
    'empresa' => $empresa,
    'nit' => '0',
-   'interes' => $interes,
+   'interes' => $interesweb,
    'sector_id' => '1',
    'cantidad_id' => '1',
-   'referido_id' => $utm_crm,
+   'referido_id' => '1',
    'utm_source' => $utm_source,
    'utm_campaign' => $utm_campaign,
    'utm_medium' => $utm_medium,
@@ -2107,7 +2120,7 @@ return redirect($url);
    'comentarios' => '1',
    'tipo' => '1',
    'remember_token' => Hash::make('_token'),
-]);
+   ]);
 
   $envio =  Input::get('form_id');
      $redireccion = Input::get('redireccion');
