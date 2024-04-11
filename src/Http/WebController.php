@@ -1894,11 +1894,19 @@ return redirect($url);
   $uri_parts = explode('/', $uri_path);
   $request_url = end($uri_parts);
   if($request_url == ''){
-    $interesweb = 'inicio';
+    $interesweb = '/';
   }
     else{
       $interesweb = $request_url;
   }
+
+  $pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=',$interesweb)->get();
+
+  foreach($pagina as $pagina){
+    $interweb = $pagina->id;
+  }
+
+
 
   $request_url = end($uri_parts);
 
@@ -2108,7 +2116,7 @@ return redirect($url);
    'direccion' => $direccion,
    'empresa' => $empresa,
    'nit' => '0',
-   'interes' => $interesweb,
+   'interes' => $interweb,
    'sector_id' => '1',
    'cantidad_id' => '1',
    'referido_id' => '1',
