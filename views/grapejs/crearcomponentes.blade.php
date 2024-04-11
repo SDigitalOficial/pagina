@@ -123,7 +123,7 @@
                                              'Básicos' => 'Básicos',
                                              'Diagramación' => 'Diagramación',
                                              'Formularios' => 'Formualrios',
-                                             'CTA's => 'CTA's,
+                                             'CTAs' => 'CTAs',
                                              'Sliders' => 'Sliders',
                                              'Acordeones' => 'Acordeones',
                                              'Carousel' => 'Carousel',
