@@ -100,6 +100,7 @@
 
                                       <h6><b>Datos Generales</b></h6>
                                        <hr>
+                                       <!--
                                        <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Mensaje Head</label>
                                             <div class="col-md-9">
@@ -115,14 +116,14 @@
                                                  '0' => 'No Visible'], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
-
+                                        -->
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Mensaje Etiqueta</label>
                                             <div class="col-md-9">
                                                 {{Form::text('accion', '', array('class' => 'form-control','placeholder'=>'Ingrese etiqueta','required' => 'required'))}}
                                             </div>
                                         </div>
-
+                                        <!--
                                         <div class="form-group">
                                           <label class="col-md-3 control-label" for="example-password-input">Imagen Empresa</label>
                                           <div class="col-md-9">
@@ -132,7 +133,7 @@
                                            </div>
                                           </div>
                                          </div>
-
+                                           --> 
                                         <hr>
                                         @else
                                         @endif
@@ -146,7 +147,7 @@
                                                 {{Form::text('numero', '', array('class' => 'form-control','placeholder'=>'Ingrese número whatsapp','required' => 'required'))}}
                                             </div>
                                         </div>
-
+                                        <!--
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Cargo o Área</label>
                                             <div class="col-md-9">
@@ -160,7 +161,7 @@
                                                 {{Form::text('secundario', '', array('class' => 'form-control','placeholder'=>'Ingrese nombre asesor','required' => 'required'))}}
                                             </div>
                                         </div>
-
+                                        --->
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Mensaje Precarga</label>
                                             <div class="col-md-9">
@@ -178,7 +179,7 @@
                                                  '0' => 'No Visible'], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
-
+                                        <!--
                                         <div class="form-group">
                                           <label class="col-md-3 control-label" for="example-password-input">Imagen Asesor</label>
                                           <div class="col-md-9">
@@ -188,7 +189,7 @@
                                            </div>
                                           </div>
                                          </div>
-                                       
+                                       -->
                                        
 
                                         <div class="form-group form-actions">

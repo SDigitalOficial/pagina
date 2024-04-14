@@ -120,11 +120,12 @@ $menu = \DigitalsiteSaaS\Pagina\Tenant\Page::whereNull('page_id')->orderBy('post
 $pagina = \DigitalsiteSaaS\Pagina\Tenant\Page::where('slug','=','/')->get();
 $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get();
 $seo =  \DigitalsiteSaaS\Pagina\Tenant\Seo::where('id','=',1)->get();
+$whatsapp = \DigitalsiteSaaS\Pagina\Tenant\Whatsapp::where('id','=',1)->get();
 foreach($select as $select){
 $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
 }
-return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas);
+return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp);
 }
 
 
@@ -2111,7 +2112,7 @@ return redirect($url);
    $usermacrm = \DigitalsiteSaaS\Gestion\Tenant\Gestion::create([
    'nombre' => $nombre,
    'apellido' => $apellido,
-   'email' => $direccion,
+   'email' => $email,
    'numero' => $telefono,
    'direccion' => $direccion,
    'empresa' => $empresa,

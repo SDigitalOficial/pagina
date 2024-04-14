@@ -98,13 +98,14 @@
                                       @if($whatsapp->id == 1)
                                       <h6><b>Datos Generales</b></h6>
                                        <hr>
+                                       <!--
                                        <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Mensaje Head</label>
                                             <div class="col-md-9">
                                                 {{Form::text('bienvenida', $whatsapp->bienvenida, array('class' => 'form-control','placeholder'=>'Ingrese Mensaje head','required' => 'required'))}}
                                             </div>
                                         </div>
-
+                                     
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Visualización whatsapp</label>
                                             <div class="col-md-9">
@@ -114,14 +115,14 @@
                                                  '0' => 'No Visible'], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
-
+                                    -->
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Mensaje Etiqueta</label>
                                             <div class="col-md-9">
                                                 {{Form::text('accion', $whatsapp->accion, array('class' => 'form-control','placeholder'=>'Ingrese etiqueta','required' => 'required'))}}
                                             </div>
                                         </div>
-                                        
+                                        <!--
                                         <div class="form-group">
                                           <label class="col-md-3 control-label" for="example-password-input">Imagen Empresa</label>
                                           <div class="col-md-9">
@@ -131,7 +132,7 @@
                                            </div>
                                           </div>
                                          </div>
-
+                                        -->
                                         <hr>
                                        
                                       @else
@@ -146,7 +147,7 @@
                                                 {{Form::text('numero', $whatsapp->numero, array('class' => 'form-control','placeholder'=>'Ingrese número whatsapp','required' => 'required'))}}
                                             </div>
                                         </div>
-
+                                        <!--
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Cargo o Área</label>
                                             <div class="col-md-9">
@@ -160,14 +161,14 @@
                                                 {{Form::text('secundario', $whatsapp->secundario, array('class' => 'form-control','placeholder'=>'Ingrese nombre asesor','required' => 'required'))}}
                                             </div>
                                         </div>
-
+                                        -->
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-text-input">Mensaje Precarga</label>
                                             <div class="col-md-9">
                                                 {{Form::text('llamado', $whatsapp->llamado, array('class' => 'form-control','placeholder'=>'Ingrese mensaje precarga','required' => 'required'))}}
                                             </div>
                                         </div>
-
+    
                                         
 
                                         <div class="form-group">
@@ -179,7 +180,7 @@
                                                  '0' => 'No Visible'], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
-
+                                         <!--               
                                         <div class="form-group">
                                           <label class="col-md-3 control-label" for="example-password-input">Imagen Asesor</label>
                                           <div class="col-md-9">
@@ -189,7 +190,7 @@
                                            </div>
                                           </div>
                                          </div>
-                                       
+                                       -->
                                        
 
                                         <div class="form-group form-actions">
