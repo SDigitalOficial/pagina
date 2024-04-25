@@ -2129,28 +2129,26 @@ return redirect($url);
    'utm_medium' => $utm_medium,
    'pais_id' => '1',
    'ciudad_id' => '1',
-   'comentarios' => '1',
+   'comentarios' => $mensaje,
    'tipo' => '1',
    'remember_token' => Hash::make('_token'),
    ]);
 
-  $envio =  Input::get('form_id');
-     $redireccion = Input::get('redireccion');
-     $ema = Input::get('email');
-      if($ema == ''){
-      return Redirect::to($redireccion)->with('status', 'ok_create');
-     }
-     else{
-      /*
-      $datas =\DigitalsiteSaaS\Pagina\Tenant\Content::where('id',$envio)->get();
-       foreach ($datas as $user){
-        $for = ['darioma07@hotmail.com','darioma07@gmail.com','dario.martinez@sitedigital.com.co'];
-        $id_str = explode(',', trim($user->video));
-       Mail::to(Input::get('email'))
-       ->bcc([$id_str][0])
+   $redireccion = Input::get('redireccion');
+   $ema = Input::get('email');
+    if($ema == ''){
+     return Redirect::to($redireccion)->with('status', 'ok_create');
+    }
+    else{
+     /*
+     $datas =\DigitalsiteSaaS\Pagina\Tenant\Content::where('id',$envio)->get();
+     foreach ($datas as $user){
+     $for = ['darioma07@hotmail.com','darioma07@gmail.com','dario.martinez@sitedigital.com.co'];
+     $id_str = explode(',', trim($user->video));
+     Mail::to(Input::get('email'))
+     ->bcc([$id_str][0])
      ->send(new Mensajema($userma));
-
-     }*/
+     } */
      return Redirect::to($redireccion)->with('status', 'ok_create');
    }
     
