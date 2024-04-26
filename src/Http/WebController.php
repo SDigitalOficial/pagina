@@ -51,6 +51,7 @@
  use App\Mail\Registro;
  use App\Mail\Mensajema;
  use App\Mail\SendMailable;
+ use App\Mail\WelcomeEmail;
  use Validator;
  use Response;
  use DigitalsiteSaaS\Avanza\Avanzaempresa;
@@ -2134,14 +2135,24 @@ return redirect($url);
    'remember_token' => Hash::make('_token'),
    ]);
 
+   
+
    $redireccion = Input::get('redireccion');
    $ema = Input::get('email');
     if($ema == ''){
      return Redirect::to($redireccion)->with('status', 'ok_create');
     }
     else{
+      $datas =\DigitalsiteSaaS\Pagina\Tenant\Date::where('id',1)->get();
+      foreach ($datas as $user){
+      Mail::to(Input::get('email'))
+      ->bcc($user->correo)
+      ->send(new WelcomeEMail([
+          'name' => 'Demo',
+     ]));
+     }
      /*
-     $datas =\DigitalsiteSaaS\Pagina\Tenant\Content::where('id',$envio)->get();
+     $datas =\DigitalsiteSaaS\Pagina\Tenant\Date::where('id',1)->get();
      foreach ($datas as $user){
      $for = ['darioma07@hotmail.com','darioma07@gmail.com','dario.martinez@sitedigital.com.co'];
      $id_str = explode(',', trim($user->video));
@@ -2149,7 +2160,7 @@ return redirect($url);
      ->bcc([$id_str][0])
      ->send(new Mensajema($userma));
      } */
-     return Redirect::to($redireccion)->with('status', 'ok_create');
+     return Redirect::to('enviado')->with('status', 'ok_create');
    }
     
     }
