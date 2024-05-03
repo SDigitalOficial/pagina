@@ -123,11 +123,12 @@ $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get(
 $seo =  \DigitalsiteSaaS\Pagina\Tenant\Seo::where('id','=',1)->get();
 $whatsapp = \DigitalsiteSaaS\Pagina\Tenant\Whatsapp::where('id','=',1)->get();
 $plantilla_dig = \DigitalsiteSaaS\Pagina\Tenant\Template::all();
+$visitas = \DigitalsiteSaaS\Estadistica\Tenant\Stats::count();
 foreach($select as $select){
 $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
 }
-return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp)->with('plantilla_dig', $plantilla_dig);
+return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp)->with('plantilla_dig', $plantilla_dig)->with('visitas', $visitas);
 }
 
 
@@ -147,12 +148,13 @@ $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('id','=', '1')->get(
 $seo =  \DigitalsiteSaaS\Pagina\Tenant\Seo::where('id','=',1)->get();
 $whatsapp = \DigitalsiteSaaS\Pagina\Tenant\Whatsapp::where('id','=',1)->get();
 $plantilla_dig = \DigitalsiteSaaS\Pagina\Tenant\Template::all();
+$visitas = \DigitalsiteSaaS\Estadistica\Tenant\Stats::count();
 foreach($select as $select){
 $plantillas = GrapeTemp::where('id','=',$select->template)->get();
 }
 }
 
-return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp)->with('plantilla_dig', $plantilla_dig);
+return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp)->with('plantilla_dig', $plantilla_dig)->with('visitas', $visitas);
 }
 
 
