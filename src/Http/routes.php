@@ -20,6 +20,14 @@ Route::get('gestion/editar-tenants/{id}', 'DigitalsiteSaaS\Pagina\Http\Configura
 
 Route::group(['middleware' => ['auths','administrador']], function (){
 
+ Route::get('gestion/contenidos/blog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@blogs');
+ Route::get('gestion/contenidos/crear-blog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@blog');
+ Route::post('gestion/contenidos/crearblog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearblog');
+ Route::get('gestion/contenidos/eliminarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarblog');
+Route::get('gestion/contenidos/editarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@editarblog');
+ Route::post('gestion/contenidos/actualizarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarblog');
+
+
 Route::resource('gestion/paginas', 'DigitalsiteSaaS\Pagina\Http\PaginaController');
 Route::resource('gestion/paginas/crear', 'DigitalsiteSaaS\Pagina\Http\PaginaController@show');
 Route::post('gestion/paginas/crearpagina', 'DigitalsiteSaaS\Pagina\Http\PaginaController@crearpagina');
@@ -142,6 +150,7 @@ Route::group(['middleware' => ['auths','administrador']], function (){
  Route::get('gestion/contenidos/digitales/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@digitales');
 
 
+
  Route::resource('gestion/contenidos/diagrama', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@diagrama');
  Route::post('gestion/contenidos/actualizardiagrama/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizardiagrama');
  Route::get('gestion/contenidos/graficos/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@graficos');
@@ -201,8 +210,8 @@ Route::group(['middleware' => ['auths','administrador']], function (){
  Route::post('gestion/contenidos/crearbaner', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearbaner');
  Route::get('gestion/contenidos/eliminar/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminar');
  Route::get('gestion/contenidos/eliminartemp/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminartemp');
- Route::post('gestion/contenidos/crearblog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearblog');
- Route::get('gestion/contenidos/eliminarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarblog');
+
+
  Route::get('gestion/contenidos/eliminarinput/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarinput');
  Route::get('gestion/contenidos/eliminarselector/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarselector');
  Route::get('gestion/contenidos/eliminarbanner/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarbanner');
@@ -258,8 +267,7 @@ Route::group(['middleware' => ['auths','administrador']], function (){
  Route::resource('gestion/contenidos/subshuffle', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@subshuffle');
  Route::resource('gestion/contenidos/subshuffleweb', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@subshuffleweb');
  Route::resource('gestion/contenidos/crearshuffle', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearshuffle');
- Route::get('gestion/contenidos/editarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@editarblog');
- Route::post('gestion/contenidos/actualizarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarblog');
+
  Route::get('gestion/contenidos/eliminargaleria/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminargaleria');
  Route::resource('gestion/contenidos/eliminarcarousel', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarcarousel');
  Route::get('gestion/contenidos/eliminarcarouselimg/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarcarouselimg');

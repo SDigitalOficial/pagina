@@ -505,6 +505,16 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
   return back();
  }
 
+ public function blogs(){
+  if(!$this->tenantName){
+  $blogs = Bloguero::all();
+  }else{
+  $blogs = \DigitalsiteSaaS\Pagina\Tenant\Bloguero::all(); 
+  }
+  return view('pagina::blog.blogs')->with('blogs', $blogs);
+ }
+
+
  public function crearblog(){
   if(!$this->tenantName){
   $contenido = new Bloguero;
@@ -525,7 +535,7 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
   $contenido->num = Input::get('num');
   $contenido->page_id = Input::get('peca');
   $contenido->save();
-  return Redirect('gestion/contenidos/digitales/'.$contenido->page_id)->with('status', 'ok_create');
+  return Redirect('gestion/contenidos/blog')->with('status', 'ok_create');
  }
 
  public function creargaleria(){
@@ -675,7 +685,7 @@ $contenido = new \DigitalsiteSaaS\Pagina\Tenant\Select;
   $contenido->num = Input::get('num');
   $contenido->page_id = Input::get('peca');
   $contenido->save();
-  return Redirect('gestion/contenidos/digitales/'.$contenido->page_id)->with('status', 'ok_update');
+  return Redirect('gestion/contenidos/blog')->with('status', 'ok_update');
  }
 
  public function editarshufflemen($id){
@@ -949,7 +959,7 @@ public function editarempleo($id){
   $contenido = \DigitalsiteSaaS\Pagina\Tenant\Bloguero::find($id);  
   }
   $contenido->delete();
-  return Redirect('gestion/contenidos/digitales/'.$contenido->page_id)->with('status', 'ok_delete');
+  return Redirect('gestion/contenidos/blog')->with('status', 'ok_delete');
  }
 
  public function eliminarshufflemen($id){
@@ -1232,13 +1242,10 @@ public function imagenescarousel($id){
   return view('pagina::contenidos/crear-imagen')->with('posicion', $posicion);
  }
 
- public function blog($id){
-  if(!$this->tenantName){
-  $posicion = Conte::Orderby('id', 'asc')->take(10)->pluck('posicion','posicion');
-  }else{
-  $posicion = \DigitalsiteSaaS\Pagina\Tenant\Conte::Orderby('id', 'asc')->take(10)->pluck('posicion','posicion');  
-  }
-  return view('pagina::contenidos/crear-blog')->with('posicion', $posicion);
+
+
+ public function blog(){
+  return view('pagina::contenidos/crear-blog');
  }
 
  public function jumbotron($id){

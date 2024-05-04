@@ -24,7 +24,7 @@
                                     <!-- END Form Elements Title -->
                                     
                                     <!-- Basic Form Elements Content -->
-                                     {{ Form::open(array('method' => 'POST','class' => 'form-horizontal','id' => 'defaultForm', 'url' => array('gestion/contenidos/creargrafico'))) }}
+                                     {{ Form::open(array('method' => 'POST','class' => 'form-horizontal','id' => 'defaultForm', 'url' => array('gestion/contenidos/crearblog'))) }}
 
                                         
                                         <div class="form-group">
@@ -79,12 +79,7 @@
                                              </div>
                                         </div>
 
-                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-select">Posición</label>
-                                            <div class="col-md-9">
-                                              {{Form::select('posicion', $posicion,null, array('class' => 'form-control'))}}
-                                            </div>
-                                        </div>
+                                      
 
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
