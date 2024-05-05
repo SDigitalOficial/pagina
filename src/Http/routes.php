@@ -20,12 +20,12 @@ Route::get('gestion/editar-tenants/{id}', 'DigitalsiteSaaS\Pagina\Http\Configura
 
 Route::group(['middleware' => ['auths','administrador']], function (){
 
- Route::get('gestion/contenidos/blog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@blogs');
- Route::get('gestion/contenidos/crear-blog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@blog');
- Route::post('gestion/contenidos/crearblog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearblog');
- Route::get('gestion/contenidos/eliminarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarblog');
+Route::get('gestion/contenidos/blog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@blogs');
+Route::get('gestion/contenidos/crear-blog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@blog');
+Route::post('gestion/contenidos/crearblog', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@crearblog');
+Route::get('gestion/contenidos/eliminarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@eliminarblog');
 Route::get('gestion/contenidos/editarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@editarblog');
- Route::post('gestion/contenidos/actualizarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarblog');
+Route::post('gestion/contenidos/actualizarblog/{id}', 'DigitalsiteSaaS\Pagina\Http\ContenidoController@actualizarblog');
 
 
 Route::resource('gestion/paginas', 'DigitalsiteSaaS\Pagina\Http\PaginaController');
@@ -481,12 +481,16 @@ Route::get('/ubicacion/ajax-subcatweb',function(){
 
 
 Route::group(['middleware' => ['web']], function (){
+
+Route::get('blog/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@blog');
+
+
 Route::get('mensajes/estadisticas', 'DigitalsiteSaaS\Pagina\Http\WebController@estadistica');
 Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
-  Route::get('autocomplete/web',array('as'=>'autocomplete/web','uses'=>'DigitalsiteSaaS\Pagina\Http\WebController@autocomplete'));
-  Route::get('/respuesta/error', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@resperror');
-  Route::post('respuesta/informacion', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@informacion');
- Route::post('/suscripcion/suscripcion', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@suscripcion');
+Route::get('autocomplete/web',array('as'=>'autocomplete/web','uses'=>'DigitalsiteSaaS\Pagina\Http\WebController@autocomplete'));
+Route::get('/respuesta/error', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@resperror');
+Route::post('respuesta/informacion', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@informacion');
+Route::post('/suscripcion/suscripcion', 'DigitalsiteSaaS\Pagina\Http\UsersaasController@suscripcion');
 
  Route::get('ingresar', 'DigitalsiteSaaS\Pagina\Http\WebController@ingresar');
  Route::resource('ingreso-comunidad', 'DigitalsiteSaaS\Pagina\Http\WebController@ingresarcomunidad');
@@ -501,7 +505,6 @@ Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
  Route::get('en/{page}', 'DigitalsiteSaaS\Pagina\Http\WebController@paginasin');
   Route::get('es/{page}', 'DigitalsiteSaaS\Pagina\Http\WebController@paginasin');
  Route::get('{{id}}', 'DigitalsiteSaaS\Pagina\Http\WebController@subpaginas');
- Route::get('blog/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@blog');
  Route::get('/es/blog/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@blog');
  Route::get('/en/blog/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@blog');
  Route::get('gestiones/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@gestion');
