@@ -97,6 +97,14 @@
                                                {{Form::radio('nivel', '2')}}Sub-Menú  
                                             </div>
                                         </div> 
+
+                                         <div class="form-group">
+                                            <label class="col-md-3 control-label">Blog</label>
+                                            <div class="col-md-9">
+                                               {{Form::radio('robot', '', true)}}No Visible<br>
+                                               {{Form::radio('robot', '2')}}Visible  
+                                            </div>
+                                        </div>
                                     
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Posición</label>

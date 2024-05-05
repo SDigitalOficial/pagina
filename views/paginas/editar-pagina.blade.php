@@ -58,6 +58,24 @@
                                             </div>
                                         </div> 
                                         @endif
+
+                                        @if($paginas->robot == 1)
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Blog</label>
+                                            <div class="col-md-9">
+                                                {{Form::radio('robot', '1', true)}}No Visible<br> 
+                                                {{Form::radio('robot', '2')}}Visible   
+                                            </div>
+                                        </div> 
+                                        @elseif($paginas->robot == 2)
+                                              <div class="form-group">
+                                            <label class="col-md-3 control-label">Tipo Menú</label>
+                                            <div class="col-md-9">
+                                                {{Form::radio('robot', '1')}}No Visible<br> 
+                                                {{Form::radio('robot', '2',true)}}Visible   
+                                            </div>
+                                        </div> 
+                                        @endif
                                         @if($number == 1)
 
                                          <div class="form-group">
