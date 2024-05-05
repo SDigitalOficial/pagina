@@ -189,7 +189,7 @@ public function blog($id){
   $bloguero = \DigitalsiteSaaS\Pagina\Tenant\Bloguero::all();
   $blog = \DigitalsiteSaaS\Pagina\Tenant\Bloguero::where('slug','=',$id)->get(); 
   foreach($select as $select){
-   $plantillas = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=',$select->template)->get();
+   $plantillas = GrapeTemp::where('id','=',$select->template)->get();
   }
   $temp = GrapeTemp::where('id',$select->template)->value('plantilla');
  }
