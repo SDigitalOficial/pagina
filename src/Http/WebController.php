@@ -191,7 +191,7 @@ public function blog($id){
   foreach($select as $select){
    $plantillas = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id','=',$select->template)->get();
   }
-  $temp = \DigitalsiteSaaS\Pagina\Tenant\GrapeTemp::where('id',$select->template)->value('plantilla');
+  $temp = GrapeTemp::where('id',$select->template)->value('plantilla');
  }
  
   return view('Templates/'.$temp.'/blog')->with('menu', $menu)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp)->with('plantilla_dig', $plantilla_dig)->with('visitas', $visitas)->with('bloguero', $bloguero)->with('blog', $blog);
