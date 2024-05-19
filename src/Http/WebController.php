@@ -169,7 +169,7 @@ public function paginas($page){
   $bloguero = \DigitalsiteSaaS\Pagina\Tenant\Bloguero::all();
   foreach($select as $select){
    $plantillas = GrapeTemp::where('id','=',$select->template)->get();
-  }}
+  }
   $productos =  \DigitalsiteSaaS\Pagina\Tenant\Product::whereBetween('precio', array(Input::get('min_price'), Input::get('max_price')))
    ->where('category_id', 'like', '%' . Input::get('categoria') . '%')
    ->where('categoriapro_id', 'like', '%' . Input::get('subcategoria') . '%')
@@ -180,6 +180,7 @@ public function paginas($page){
   }
   return view('Templates.index')->with('menu', $menu)->with('pagina', $pagina)->with('seo', $seo)->with('plantillas', $plantillas)->with('whatsapp', $whatsapp)->with('plantilla_dig', $plantilla_dig)->with('visitas', $visitas)->with('bloguero', $bloguero)->with('productos', $productos);
 }
+
 
 
 public function blog($id){
