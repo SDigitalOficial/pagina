@@ -214,7 +214,7 @@ public function consultaform(){
   if(!$this->tenantName){
   $pagina = new Page;
   $pagina->page = Input::get('pagina');
-  $pagina->slugcon = Str::slug($pagina->page);
+  $pagina->slugcon = Input::get('slug');
   $pagina->slug = $pagina->idio.'/'.$pagina->slugcon;
   $pagina->description = Input::get('descripcion');
   $pagina->visualizafoot = Input::get('visualizafoot');
@@ -223,7 +223,7 @@ public function consultaform(){
   $pagina->posti = Input::get('posti');
   $pagina->posta = Input::get('posicion');
   $pagina->nivel = Input::get('nivel');
-  $pagina->robot = Input::get('robot');
+  $pagina->robot = '1';
   $pagina->sitio = Input::get('sitio');
   $pagina->idioma = Input::get('idioma');
   $pagina->seguimiento = Input::get('seguimiento');
@@ -234,7 +234,7 @@ public function consultaform(){
  else{
   $pagina = new \DigitalsiteSaaS\Pagina\Tenant\Page;
   $pagina->page = Input::get('pagina');  
-  $slugcon = Str::slug($pagina->page);
+  $slugcon = Input::get('slug');
   if($idio == 'ne'){
   $pagina->slug = $slugcon;
   }else{
@@ -248,7 +248,7 @@ public function consultaform(){
   $pagina->posti = Input::get('posti');
   $pagina->nivel = Input::get('nivel');
   $pagina->sitio = Input::get('sitio');
-  $pagina->robot = Input::get('robot');
+  $pagina->robot = '1';
   $pagina->idioma = Input::get('idioma');
   $pagina->seguimiento = Input::get('seguimiento');
   $pagina->pixel = Input::get('pixel');
@@ -268,7 +268,7 @@ public function consultaform(){
   }
   $idio = Input::get('idioma');
   $pagina->page = Input::get('pagina');
-  $slugcon = Str::slug($pagina->page);
+  $slugcon = Input::get('slug');
   if($idio == 'ne'){
   $pagina->slug = $slugcon;
   }else{
