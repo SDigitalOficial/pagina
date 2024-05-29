@@ -129,6 +129,24 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Ecommerce</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('ecommerce', [
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Blog</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('blog', [
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
                                             <div class="col-md-9">
                                                 {{ Form::select('idioma', [
@@ -245,7 +263,24 @@
                                                  ], null, array('class' => 'form-control')) }}
                                             </div>
                                         </div>
-
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Ecommerce</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('ecommerce', [
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Blog</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('blog', [
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
                                             <div class="col-md-9">

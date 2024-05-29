@@ -109,6 +109,25 @@
                                         
                                         @endif
 
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Ecommerce</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('ecommerce', [$paginas->ecommerce => $paginas->ecommerce,
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Blog</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('blog', [$paginas->blog => $paginas->blog,
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
+
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-select">Idioma</label>
                                             <div class="col-md-9">
