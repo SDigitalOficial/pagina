@@ -11,6 +11,13 @@
     <script src="//unpkg.com/grapesjs"></script>
     <script src="//unpkg.com/grapesjs-user-blocks"></script>
     <link href="https://unpkg.com/grapesjs-user-blocks/dist/grapesjs-user-blocks.min.css" rel="stylesheet">
+    <link href="http://sitekonecta.com/grapejs/dist/grapesjs-component-code-editor.min.css" rel="stylesheet">
+    <script src="http://sitekonecta.com/grapejs/dist/grapesjs-component-code-editor.min.js"></script>
+    <script src="https://unpkg.com/grapesjs-plugin-ckeditor"></script>
+
+    
+
+
 
     <style type="text/css">
      body{
@@ -38,6 +45,8 @@
 
      </body>
 
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
     <script>
@@ -46,7 +55,7 @@
     container: '#gjs',
     fromElement: true,
     height: '100%',
-    plugins: ['grapesjs-user-blocks'],
+    plugins: ['grapesjs-user-blocks','grapesjs-component-code-editor','grapesjs-plugin-ckeditor'],
     allowScripts: 1,  
     showOffsets: true,
     embedAsBase64: false,  
@@ -153,7 +162,7 @@
     <script type="text/javascript">
      editor.Panels.addButton('options',[{
      id: 'save-db',
-     className: 'fas fa-save',
+     className: 'fa fa-save',
      command: 'save-db',
      attributes: {
      title: 'Save Changes'
@@ -323,6 +332,23 @@ var pfx = editor.getConfig().stylePrefix
 });
 </script>
 
+
+
+<script>
+  const pn = editor.Panels;
+const panelViews = pn.addPanel({
+  id: 'views'
+});
+panelViews.get('buttons').add([{
+  attributes: {
+     title: 'Open Code'
+  },
+  className: 'fa fa-file-code-o',
+  command: 'open-code',
+  togglable: false, //do not close when button is clicked again
+  id: 'open-code'
+}]);
+</script>
     
     </body>
 </html>
