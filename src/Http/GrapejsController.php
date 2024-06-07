@@ -230,7 +230,7 @@ $resultArray = array();
 
         $img = $file['name'];
         $extension = \File::extension($img);
-        if(in_array($extension,["jpeg","jpg","png"])){
+        if(in_array($extension,["jpeg","jpg","png","webp"])){
     //old image
             $webp = $file['name'];
             $new_webp = preg_replace('"\.(jpg|jpeg|png|webp)$"', '.webp', $webp);

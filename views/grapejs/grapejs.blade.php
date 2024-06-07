@@ -333,6 +333,41 @@ var pfx = editor.getConfig().stylePrefix
 </script>
 
 
+<script type="text/javascript">
+
+editor.DomComponents.addType('img', {
+    isComponent: el => el.tagName == 'IMG',
+    model: {
+      defaults: {
+        traits: [
+          'name', // Same as: { type: 'text', name: 'name' }
+          'placeholder',
+          // Strings are automatically converted to text types
+          {
+            type: 'text', // Type of the trait
+            label: 'Class', // The label you will see in Settings
+            label: 'width', // The label you will see in Settings
+            name: 'class', // The name of the attribute/property to use on component
+            
+          }
+          
+        ],
+       
+        // As by default, traits are binded to attributes, so to define
+        // their initial value we can use attributes
+      },
+
+      init() {
+        this.on('change:attributes:class', this.handleTypeChange);
+      },
+  
+      handleTypeChange() {
+        console.log('Input type changed to: ', this.getAttributes().type);
+      },
+    },
+});
+</script>
+
 
 <script>
   const pn = editor.Panels;
