@@ -287,6 +287,7 @@ class ConfiguracionController extends Controller
     public function tenants(){
     if(!$this->tenantName){
     $tenants = DB::table('tenancy.hostnames')->get(); 
+    $sites = DB::table('tenancy.websites')->get();
     }else{
      $tenants = DB::table('tenancy.hostnames')->get(); 
      $sites = DB::table('tenancy.websites')->get();
