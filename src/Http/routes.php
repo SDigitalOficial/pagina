@@ -13,6 +13,7 @@ Route::get('actualizar/host', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController
 Route::post('suscripcion/actualizarhost/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@updatehost');
 Route::get('gestion/contenidos/tenants', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@tenants');
 Route::get('gestion/editar-tenants/{id}', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@editartenants');
+Route::get('gestion/servicios-web', 'DigitalsiteSaaS\Pagina\Http\ConfiguracionController@tenants');
 
 
 });
@@ -293,15 +294,6 @@ Route::get('gestion/registro/eliminar-registro/{id}', 'DigitalsiteSaaS\Pagina\Ht
 
 
 
-
-
-
- Route::get('consulta/formularios', 'DigitalsiteSaaS\Pagina\Http\PaginaController@consultaform');
-
- Route::get('gestion/contenidos/editarcontshuffle/{id}', function($id){
-  $contenidos = DB::table('shuffle')->where('id', "=", $id)->get();  
-  return View::make('pagina::actualizar-contshuffle')->with('contenidos', $contenidos);
- });
 
 
 

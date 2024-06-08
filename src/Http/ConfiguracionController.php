@@ -289,8 +289,12 @@ class ConfiguracionController extends Controller
     $tenants = DB::table('tenancy.hostnames')->get(); 
     }else{
      $tenants = DB::table('tenancy.hostnames')->get(); 
+     $sites = DB::table('tenancy.websites')->get();
+   
+ 
     }
-     return View('pagina::configuracion.tenants')->with('tenants', $tenants);
+  
+     return View('pagina::configuracion.tenants')->with('tenants', $tenants)->with('sites', $sites);
     }
 
     public function editartenants($id){

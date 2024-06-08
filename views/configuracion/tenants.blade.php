@@ -75,6 +75,7 @@
   <tr>
    <th class="text-center">FQDN</th>
    <th class="text-center">Website Id</th>
+   <th class="text-center">Template</th>
    <th class="text-center">Plan</th>
    <th class="text-center">Fecha</th>
    <th class="text-center">Redirección</th>
@@ -86,9 +87,12 @@
     
  <tbody>
   @foreach($tenants as $tenants)
+  @foreach($sites as $sitesa)
+  @if($tenants->website_id == $sitesa->id)
    <tr>
     <td class="text-center">{{$tenants->fqdn}}</td>
-   <td class="text-center">{{$tenants->website_id}}</td>
+   <td class="text-center"> <b>{{$sitesa->uuid}}</b> </td>
+   <td>{{str_replace(['"','[',']'], ' ', DB::table($sitesa->uuid.'.'.'template')->pluck('template'))}}</td>
    <td><span class="badge">{{$tenants->plan_id}}</span></td>
    <td>{{$tenants->presentacion}}</td>
    <td>{{$tenants->redirect_to}}</td>
@@ -116,6 +120,9 @@
 -->
        </td>
       </tr>
+       @else
+       @endif
+      @endforeach
       @endforeach
     </tbody>
    </table>
