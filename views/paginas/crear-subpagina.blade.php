@@ -78,6 +78,12 @@
                                                 {{Form::text('pagina', '', array('class' => 'form-control','placeholder'=>'Ingrese página','maxlength' => '50' ))}}
                                             </div>
                                         </div>
+                                           <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-text-input">Url Página</label>
+                                            <div class="col-md-9">
+                                                {{Form::text('slug', '', array('class' => 'form-control','placeholder'=>'Ingrese Url Página','maxlength' => '50' ))}}
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-email-input">Título</label>
                                             <div class="col-md-9">
@@ -113,6 +119,24 @@
                                             </div>
                                         </div>
 
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Ecommerce</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('ecommerce', [
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-select">Visualización Blog</label>
+                                            <div class="col-md-9">
+                                                {{ Form::select('blog', [
+                                                 '0' => 'No Visible',
+                                                 '1' => 'Visible'
+                                                 ], null, array('class' => 'form-control')) }}
+                                            </div>
+                                        </div>
                                          <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-textarea-input">Descripción</label>
                                             <div class="col-md-9">

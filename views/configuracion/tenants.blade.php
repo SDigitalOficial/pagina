@@ -92,7 +92,8 @@
    <tr>
     <td class="text-center">{{$tenants->fqdn}}</td>
    <td class="text-center"> <b>{{$sitesa->uuid}}</b> </td>
-   <td>{{str_replace(['"','[',']'], ' ', DB::table($sitesa->uuid.'.'.'grape_select')->pluck('template'))}}</td>
+   <td>{{str_replace(['"','[',']'], ' ', DB::table($sitesa->uuid.'.'.'grape_select')->pluck('template'))}} --
+    {{ str_replace(['"','[',']'], ' ',DB::table('multitenant.grape_template')->where('id', '=', DB::table($sitesa->uuid.'.'.'grape_select')->pluck('template'))->pluck('plantilla'))}}</td>
    <td><span class="badge">{{$tenants->plan_id}}</span></td>
    <td>{{$tenants->presentacion}}</td>
    <td>{{$tenants->redirect_to}}</td>
