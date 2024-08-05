@@ -99,25 +99,27 @@ class GrapejsController extends Controller
       
     }
 
-    public function vistatemplates(){
-     if(!$this->tenantName){
-     $templates = GrapeTemp::all();
-     $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::join('grape_template','grape_select.template','=','grape_template.id')
+ public function vistatemplates(){
+  if(!$this->tenantName){
+   $templates = GrapeTemp::all();
+   $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::join('grape_template','grape_select.template','=','grape_template.id')
     ->where('grape_select.id', 1)
     ->get();
+   }else{
+   
+   $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::where('grape_select.id', 1)->get();
+   }
 
-     }else{
-    $templates = GrapeTemp::all();
+   foreach($select as $select){
+   $identificador = $select->template;
+   }
+   
+   $templates = GrapeTemp::where('id', '=', $identificador)->get();
+   $alltemplates = GrapeTemp::all();
 
-    $select = \DigitalsiteSaaS\Pagina\Tenant\Grapeselect::join('grape_template','grape_select.template','=','grape_template.id')
-    ->where('grape_select.id', 1)
-    ->get();
 
-     }
-
-     return View('pagina::grapejs.templates')->with('templates', $templates)->with('select', $select);
-      
-    }
+   return View('pagina::grapejs.templates')->with('templates', $templates)->with('select', $select)->with('alltemplates', $alltemplates);
+   }
 
 
     public function vercomponentes($id){

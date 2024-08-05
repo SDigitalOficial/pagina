@@ -87,11 +87,11 @@
 
                                        <label for="cars">Seleccionar Template</label>
                                         <select name="template" id="template" class="form-control">
-                                        @foreach($select as $select)
-                                        <option value="{{$select->id}}" selected>{{$select->plantilla}}</option>
+                                        @foreach($alltemplates as $alltemplates)
+                                        <option value="{{$alltemplates->id}}" selected>{{$alltemplates->plantilla}}</option>
                                         @endforeach
                                         @foreach($templates as $templatesa)
-                                        <option value="{{$templatesa->id}}">{{$templatesa->plantilla}}</option>
+                                        <option value="{{$templatesa->id}}" selected>{{$templatesa->plantilla}}</option>
                                         @endforeach
                                         </select>
     
