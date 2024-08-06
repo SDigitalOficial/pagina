@@ -11,8 +11,8 @@
     <script src="//unpkg.com/grapesjs"></script>
     <script src="//unpkg.com/grapesjs-user-blocks"></script>
     <link href="https://unpkg.com/grapesjs-user-blocks/dist/grapesjs-user-blocks.min.css" rel="stylesheet">
-    <link href="http://sitekonecta.com/grapejs/dist/grapesjs-component-code-editor.min.css" rel="stylesheet">
-    <script src="http://sitekonecta.com/grapejs/dist/grapesjs-component-code-editor.min.js"></script>
+    <link href="{{Request::root()}}/grapejs/dist/grapesjs-component-code-editor.min.css" rel="stylesheet">
+    <script src="{{Request::root()}}/grapejs/dist/grapesjs-component-code-editor.min.js"></script>
     <script src="https://unpkg.com/grapesjs-plugin-ckeditor"></script>
 
     
