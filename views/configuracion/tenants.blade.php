@@ -78,9 +78,10 @@
    <th class="text-center">Template</th>
    <th class="text-center">Plan</th>
    <th class="text-center">Fecha</th>
-   <th class="text-center">Redirección</th>
-   <th class="text-center">Https</th>
-   <th class="text-center">mantenimiento</th>
+ 
+   
+ 
+   <th class="text-center">Usuario</th>
    <th class="text-center">Acciones</th>
   </tr>
  </thead>
@@ -96,9 +97,16 @@
     {{ str_replace(['"','[',']'], ' ',DB::table('multitenant.grape_template')->where('id', '=', DB::table($sitesa->uuid.'.'.'grape_select')->pluck('template'))->pluck('plantilla'))}}</td>
    <td><span class="badge">{{$tenants->plan_id}}</span></td>
    <td>{{$tenants->presentacion}}</td>
-   <td>{{$tenants->redirect_to}}</td>
-   <td>{{$tenants->force_https}}</td>
-   <td>{{$tenants->under_maintenance_since}}</td>
+
+
+
+   @foreach($users as $user)
+   @if($user->saas_id == $tenants->website_id)
+   <td><a href="/gestion/usuario/editar/{{$user->id}}">{{$user->name}}</a></td>
+   @else
+   @endif
+   @endforeach
+ 
        <td class="text-center">
 
 

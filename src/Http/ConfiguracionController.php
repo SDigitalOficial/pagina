@@ -21,6 +21,7 @@ use DigitalsiteSaaS\Pagina\Pais;
 use DigitalsiteSaaS\Pagina\Municipio;
 use DigitalsiteSaaS\Pagina\Recaptcha;
 use DigitalsiteSaaS\Pagina\Whatsapp;
+use App\User;
 use Excel;
 use GuzzleHttp\Client;
 use DigitalsiteSaaS\Pagina\Seo;
@@ -288,14 +289,16 @@ class ConfiguracionController extends Controller
     if(!$this->tenantName){
     $tenants = DB::table('tenancy.hostnames')->get(); 
     $sites = DB::table('tenancy.websites')->get();
+    $users = DB::table('multitenant.users')->get();
     }else{
      $tenants = DB::table('tenancy.hostnames')->get(); 
      $sites = DB::table('tenancy.websites')->get();
+     $users = DB::table('multitenant.users')->get();
    
  
     }
-  
-     return View('pagina::configuracion.tenants')->with('tenants', $tenants)->with('sites', $sites);
+   
+     return View('pagina::configuracion.tenants')->with('tenants', $tenants)->with('sites', $sites)->with('users', $users);
     }
 
     public function editartenants($id){
