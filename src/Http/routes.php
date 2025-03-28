@@ -292,7 +292,7 @@ Route::get('gestion/registro/eliminar-registro/{id}', 'DigitalsiteSaaS\Pagina\Ht
 
 
 
-
+Route::post('/formulario/contacto', [DigitalsiteSaaS\Pagina\Http\ContactoController::class, 'enviar']);
 
 
 

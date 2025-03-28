@@ -303,12 +303,14 @@ class ConfiguracionController extends Controller
 
     public function editartenants($id){
     if(!$this->tenantName){
-    $tenants = DB::table('tenancy.hostnames')->where('id','=',$id)->get(); 
+    $tenants = DB::table('tenancy.hostnames')->where('id','=',$id)->get();
+    $users = User::all();
     }else{
-     $tenants = DB::table('tenancy.hostnames')->where('id','=',$id)->get(); 
+     $tenants = DB::table('tenancy.hostnames')->where('id','=',$id)->get();
+     $users = User::all();
     }
-   
-     return View('pagina::configuracion.editartenants')->with('tenants', $tenants);
+   dd($users);
+     return View('pagina::configuracion.editartenants')->with('tenants', $tenants)->with('users', $users);
     }
 
     public function verubicacion(){

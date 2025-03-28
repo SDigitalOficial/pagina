@@ -2117,6 +2117,53 @@ if(Input::get('nit') == '')
     
     }
 
+    public function enviar(Request $request)
+    {
+        // Validar los datos
+        $validated = $request->validate([
+            'nombre' => 'required',
+            'email' => 'required|email',
+            'mensaje' => 'required'
+        ]);
+
+        // Guardar en la base de datos
+        if(!$this->tenantName){
+        $contacto = Gestion::create([
+            'nombre' => $request->nombre,
+            'email' => $request->email,
+            'mensaje' => $request->mensaje,
+            'utm_source' => $request->input('utm_source', ''),
+            'utm_medium' => $request->input('utm_medium', ''),
+            'utm_campaign' => $request->input('utm_campaign', ''),
+        ]);
+      }else{
+        $contacto = \DigitalsiteSaaS\Gestion\Tenant\Gestion::create([
+            'nombre' => $request->nombre,
+            'email' => $request->email,
+            'mensaje' => $request->mensaje,
+            'utm_source' => $request->input('utm_source', ''),
+            'utm_medium' => $request->input('utm_medium', ''),
+            'utm_campaign' => $request->input('utm_campaign', ''),
+        ]);
+
+      }
+
+        // Lista de destinatarios
+        $destinatarios = ['correo1@example.com', 'correo2@example.com'];
+
+        // Enviar correo
+        Mail::raw(
+            "Mensaje: {$contacto->mensaje}\n\nUTM Source: {$contacto->utm_source}\nUTM Medium: {$contacto->utm_medium}\nUTM Campaign: {$contacto->utm_campaign}",
+            function ($message) use ($contacto, $destinatarios) {
+                $message->to($destinatarios)
+                        ->subject('Nuevo mensaje de contacto')
+                        ->from($contacto->email, $contacto->nombre);
+            }
+        );
+
+        return response()->json(['success' => 'Mensaje enviado y guardado correctamente']);
+    }
+
 
 
   public function estadistica(){
