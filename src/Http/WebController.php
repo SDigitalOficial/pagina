@@ -2133,6 +2133,7 @@ if(Input::get('nit') == '')
             'nombre' => $request->nombre ?? 'Usuario Desconocido',
             'email' => $request->email  ?? 'Email Desconocido',
             'mensaje' => $request->mensaje  ?? 'Sin mensaje', 
+            'empresa' => $request->empresa  ?? 'Sin Información',
             'valor' => $request->slug ?? 'Home',
             'tipo' => '1',
             'utm_source' => $request->input('utm_source', 'Sin Informacion'),
@@ -2143,6 +2144,7 @@ if(Input::get('nit') == '')
         $contacto = \DigitalsiteSaaS\Gestion\Tenant\Gestion::create([
             'nombre' => $request->nombre ?? 'Usuario Desconocido',
             'email' => $request->email  ?? 'Email Desconocido',
+            'empresa' => $request->empresa  ?? 'Sin Información',
             'mensaje' => $request->mensaje  ?? 'Sin mensaje', 
             'valor' => $request->slug ?? 'Home',
             'tipo' => '1',
