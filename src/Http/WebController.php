@@ -45,7 +45,7 @@
  use App\Http\Requests\FicusuarioCreateRequest;
  use Input;
  use Illuminate\Support\Str;
- use Request;
+ use Illuminate\Http\Request;
  use App\Mail\Mensaje;
  use App\Mail\Mensajeficha;
  use App\Mail\Registro;
