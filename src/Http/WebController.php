@@ -2117,33 +2117,38 @@ if(Input::get('nit') == '')
     
     }
 
-    public function enviar(Request $request)
+ public function enviar(Request $request)
     {
         // Validar los datos
         $validated = $request->validate([
             'nombre' => 'required',
             'email' => 'required|email',
-            'mensaje' => 'required'
+            'mensaje' => 'required',
+            'slug' => 'nullable|string',
         ]);
 
         // Guardar en la base de datos
         if(!$this->tenantName){
         $contacto = Gestion::create([
-            'nombre' => $request->nombre,
-            'email' => $request->email,
-            'mensaje' => $request->mensaje,
-            'utm_source' => $request->input('utm_source', ''),
-            'utm_medium' => $request->input('utm_medium', ''),
-            'utm_campaign' => $request->input('utm_campaign', ''),
+            'nombre' => $request->nombre ?? 'Usuario Desconocido',
+            'email' => $request->email  ?? 'Email Desconocido',
+            'mensaje' => $request->mensaje  ?? 'Sin mensaje', 
+            'valor' => $request->slug ?? 'Home',
+            'tipo' => '1',
+            'utm_source' => $request->input('utm_source', 'Sin Informacion'),
+            'utm_medium' => $request->input('utm_medium', 'Sin Informacion'),
+            'utm_campaign' => $request->input('utm_campaign', 'Sin Informacion'),
         ]);
       }else{
         $contacto = \DigitalsiteSaaS\Gestion\Tenant\Gestion::create([
-            'nombre' => $request->nombre,
-            'email' => $request->email,
-            'mensaje' => $request->mensaje,
-            'utm_source' => $request->input('utm_source', ''),
-            'utm_medium' => $request->input('utm_medium', ''),
-            'utm_campaign' => $request->input('utm_campaign', ''),
+            'nombre' => $request->nombre ?? 'Usuario Desconocido',
+            'email' => $request->email  ?? 'Email Desconocido',
+            'mensaje' => $request->mensaje  ?? 'Sin mensaje', 
+            'valor' => $request->slug ?? 'Home',
+            'tipo' => '1',
+            'utm_source' => $request->input('utm_source', 'Sin Informacion'),
+            'utm_medium' => $request->input('utm_medium', 'Sin Informacion'),
+            'utm_campaign' => $request->input('utm_campaign', 'Sin Informacion'),
         ]);
 
       }
@@ -2163,7 +2168,6 @@ if(Input::get('nit') == '')
 
         return response()->json(['success' => 'Mensaje enviado y guardado correctamente']);
     }
-
 
 
   public function estadistica(){
