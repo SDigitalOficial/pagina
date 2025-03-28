@@ -292,7 +292,7 @@ Route::get('gestion/registro/eliminar-registro/{id}', 'DigitalsiteSaaS\Pagina\Ht
 
 
 
-Route::post('/formulario/contacto', [DigitalsiteSaaS\Pagina\Http\ContactoController::class, 'enviar']);
+
 
 
 
@@ -502,7 +502,7 @@ Route::post('/suscripcion/suscripcion', 'DigitalsiteSaaS\Pagina\Http\UsersaasCon
  Route::get('gestiones/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@gestion');
  Route::get('respuesta/suscripcion/{id}', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@respuesta');
  Route::get('respuesta/respuesta', 'DigitalsiteSaaS\Pagina\Http\WebController@respuestaweb');
-
+Route::post('/formulario/contacto', [DigitalsiteSaaS\Pagina\Http\WebController::class, 'enviar']);
 
   Route::get('suscripcion/servicio', 'DigitalsiteSaaS\Pagina\Http\SuscripcionController@formulario');
 
