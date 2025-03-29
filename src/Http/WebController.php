@@ -2136,7 +2136,7 @@ if(Input::get('nit') == '')
             'empresa' => $request->empresa  ?? 'Sin Información',
             'valor' => $request->slug ?? 'Home',
             'tipo' => '1',
-            'referido_id' => $request->input('utm_crm', 'Sin Informacion'),
+            'referido_id' => $request->input('utm_crm', '1'),
             'utm_source' => $request->input('utm_source', 'Sin Informacion'),
             'utm_medium' => $request->input('utm_medium', 'Sin Informacion'),
             'utm_campaign' => $request->input('utm_campaign', 'Sin Informacion'),
@@ -2149,7 +2149,7 @@ if(Input::get('nit') == '')
             'mensaje' => $request->mensaje  ?? 'Sin mensaje', 
             'valor' => $request->slug ?? 'Home',
             'tipo' => '1',
-            'referido_id' => $request->input('utm_crm', 'Sin Informacion'),
+            'referido_id' => $request->input('utm_crm', '1'),
             'utm_source' => $request->input('utm_source', 'Sin Informacion'),
             'utm_medium' => $request->input('utm_medium', 'Sin Informacion'),
             'utm_campaign' => $request->input('utm_campaign', 'Sin Informacion'),
@@ -2158,7 +2158,7 @@ if(Input::get('nit') == '')
       }
 
         // Lista de destinatarios
-        $destinatarios = ['correo1@example.com', 'correo2@example.com'];
+        $destinatarios = ['darioma07@hotmail.com', 'correo2@example.com'];
 
         // Enviar correo
         Mail::raw(
