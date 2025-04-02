@@ -477,6 +477,8 @@ Route::group(['middleware' => ['web']], function (){
 Route::get('blog/{id}', 'DigitalsiteSaaS\Pagina\Http\WebController@blog');
 
 
+Route::post('/whatsapp-track', [DigitalsiteSaaS\Pagina\Http\WebController::class, 'trackClick'])->name('whatsapp.track');
+
 Route::get('mensajes/estadisticas', 'DigitalsiteSaaS\Pagina\Http\WebController@estadistica');
 Route::get('robots.txt', 'DigitalsiteSaaS\Pagina\Http\WebController@robot');
 Route::get('autocomplete/web',array('as'=>'autocomplete/web','uses'=>'DigitalsiteSaaS\Pagina\Http\WebController@autocomplete'));

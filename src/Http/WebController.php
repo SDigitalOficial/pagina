@@ -35,6 +35,7 @@
  use DigitalsiteSaaS\Pagina\Departamentocon;
  use DigitalsiteSaaS\Pagina\Municipio;
  use DigitalsiteSaaS\Pagina\Categoria;
+ use DigitalsiteSaaS\Pagina\WhatsappClick;
  use Mail;
  use DB;
  use Hash;
@@ -2149,10 +2150,10 @@ if(Input::get('nit') == '')
             'mensaje' => $request->mensaje  ?? 'Sin mensaje', 
             'valor' => $request->slug ?? 'Home',
             'tipo' => '1',
-            'referido_id' => $request->input('utm_crm', '1'),
-            'utm_source' => $request->input('utm_source', 'Sin Informacion'),
-            'utm_medium' => $request->input('utm_medium', 'Sin Informacion'),
-            'utm_campaign' => $request->input('utm_campaign', 'Sin Informacion'),
+            'referido_id' => $request->input('utm_crm') ?? 1,
+            'utm_source' => $request->input('utm_source') ?? 'Sin Informacion',
+            'utm_medium' => $request->input('utm_medium') ?? 'Sin Informacion',
+            'utm_campaign' => $request->input('utm_campaign') ?? 'Sin Informacion',
         ]);
 
       }
@@ -2171,6 +2172,34 @@ if(Input::get('nit') == '')
         );
 
         return response()->json(['success' => 'Mensaje enviado y guardado correctamente']);
+    }
+
+
+  public function trackClick(Request $request) {
+        try {
+
+          if(!$this->tenantName){
+            WhatsappClick::create([
+                'slug' => $request->input('slug', 'Desconocido'),
+                'utm_source' => $request->input('utm_source', 'Desconocido'),
+                'utm_medium' => $request->input('utm_medium', 'Desconocido'),
+                'utm_campaign' => $request->input('utm_campaign', 'Desconocido'),
+                'medium' => $request->input('medium', 'Desconocido'),
+            ]);
+            }else{
+              \DigitalsiteSaaS\Pagina\Tenant\WhatsappClick::create([
+                'slug' => $request->input('slug', 'Desconocido'),
+                'utm_source' => $request->input('utm_source', 'Desconocido'),
+                'utm_medium' => $request->input('utm_medium', 'Desconocido'),
+                'utm_campaign' => $request->input('utm_campaign', 'Desconocido'),
+                'medium' => $request->input('medium', 'Desconocido'),
+            ]);
+            }
+
+            return response()->json(['success' => 'Clic registrado correctamente']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
 
