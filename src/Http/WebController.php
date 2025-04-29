@@ -2124,7 +2124,6 @@ if(Input::get('nit') == '')
         $validated = $request->validate([
             'nombre' => 'required',
             'email' => 'required|email',
-            'mensaje' => 'required',
             'slug' => 'nullable|string',
         ]);
 
